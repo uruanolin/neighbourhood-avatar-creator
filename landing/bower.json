@@ -1,0 +1,8 @@
+{
+  "name": "neighbourhoodavatarlanding",
+  "dependencies": {
+    "jquery": "^2.2.3",
+    "gsap": "^1.18.4",
+    "scrollmagic": "^2.0.5"
+  }
+}

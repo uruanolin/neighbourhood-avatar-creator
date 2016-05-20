@@ -1,0 +1,6 @@
+avatar-editor/node_modules
+avatar-editor/dist
+avatar-editor/.tmp
+avatar-editor/.sass-cache
+avatar-editor/bower_components
+build/
