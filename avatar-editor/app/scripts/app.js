@@ -15,7 +15,11 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+
+    //--------------
+    'services.config'
+    //--------------
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -33,6 +37,11 @@ angular
         templateUrl: 'views/magicscrolltest.html',
         controller: 'MagicscrolltestCtrl',
         controllerAs: 'magicScrollTest'
+      })
+      .when('/admin', {
+        templateUrl: 'views/admin.html',
+        controller: 'AdminCtrl',
+        controllerAs: 'admin'
       })
       .otherwise({
         redirectTo: '/'

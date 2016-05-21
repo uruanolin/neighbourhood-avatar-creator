@@ -1,0 +1,23 @@
+<!doctype html>
+<div class="panel panel-default" style="width: 30vw; margin: 0 auto; margin-top: 10vh;">
+    <div class="panel-heading">
+        <h3 class="panel-title">Sign in</h3>
+    </div>
+    <div class="panel-body">
+
+        <form class="form-signin">
+
+            <input type="text" ng-model="username" id="inputUsername" class="form-control" placeholder="Username" name="username" required autofocus>
+            <input type="password" ng-model="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="adminLogin.login(username,password)" style="margin-top: 15px;">Sign in</button>
+        </form>
+
+    </div>
+</div>
+
+<br>
+
+<div ng-show="adminLogin.error" style="text-align: center;">
+    <b>{{adminLogin.errorMessage}}</b>
+</div>

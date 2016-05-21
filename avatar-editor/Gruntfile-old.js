@@ -16,9 +16,7 @@ module.exports = function(grunt) {
     require('jit-grunt')(grunt, {
         useminPrepare: 'grunt-usemin',
         ngtemplates: 'grunt-angular-templates',
-        cdnify: 'grunt-google-cdn',
-
-        configureProxies: 'grunt-connect-proxy'
+        cdnify: 'grunt-google-cdn'
     });
 
     // Configurable paths for the application
@@ -77,110 +75,25 @@ module.exports = function(grunt) {
                 hostname: 'localhost',
                 livereload: 35729
             },
-
-            //-------------------------------------------------
-
-            // Added for grunt-connect-proxy
-            proxies: [{
-                context: '/backenddev',
-                host: 'localhost',
-                port: 3000,
-                rewrite: {
-                    '^/backenddev': ''
-                }
-            }],
-            /*
-                        // Added for grunt-connect-proxy
-                        livereload: {
-                            options: {
-                                middleware: function(connect, options) {
-                                    if (!Array.isArray(options.base)) {
-                                        options.base = [options.base];
-                                    }
-
-                                    // Setup the proxy
-                                    var middlewares = [require('grunt-connect-proxy/lib/utils').proxyRequest];
-
-                                    // Serve static files.
-                                    options.base.forEach(function(base) {
-                                        middlewares.push(connect.static(base));
-                                    });
-
-                                    // Make directory browse-able.
-                                    var directory = options.directory || options.base[options.base.length - 1];
-                                    middlewares.push(connect.directory(directory));
-
-                                    return middlewares;
-                                }
-                            }
-                        },
-            */
-
-            // Added for grunt-connect-proxy
             livereload: {
                 options: {
                     open: true,
-                    middleware: function(connect, options) {
-                        if (!Array.isArray(options.base)) {
-                            options.base = [options.base];
-                        }
-
-                        // Setup the proxy
-                        var middlewares = [require('grunt-connect-proxy/lib/utils').proxyRequest];
-
-                        // Serve static files.
-                        options.base.forEach(function( /*base*/ ) {
-                            middlewares.push(connect.static('.tmp')); //middlewares.push(connect.static(base));
-                        });
-                        /*
-                         // Make directory browse-able.
-                         var directory = options.directory || options.base[options.base.length - 1];
-                         middlewares.push(connect.directory(directory));
-                         */
-
-                        // Comentar el push del directory (el de arriba y que venia por defecto en la función)
-                        // Añadir los push de la función por defecto
-
-                        middlewares.push(connect.static('.tmp'));
-                        middlewares.push(connect().use(
-                            '/bower_components',
-                            connect.static('./bower_components')
-                        ));
-                        middlewares.push(connect().use(
-                            '/app/styles',
-                            connect.static('./app/styles')
-                        ));
-                        middlewares.push(connect.static(appConfig.app));
-
-                        return middlewares;
+                    middleware: function(connect) {
+                        return [
+                            connect.static('.tmp'),
+                            connect().use(
+                                '/bower_components',
+                                connect.static('./bower_components')
+                            ),
+                            connect().use(
+                                '/app/styles',
+                                connect.static('./app/styles')
+                            ),
+                            connect.static(appConfig.app)
+                        ];
                     }
                 }
             },
-
-            /*
-                        livereload: {
-                            options: {
-                                open: true,
-                                middleware: function(connect) {
-                                    return [
-                                        connect.static('.tmp'),
-                                        connect().use(
-                                            '/bower_components',
-                                            connect.static('./bower_components')
-                                        ),
-                                        connect().use(
-                                            '/app/styles',
-                                            connect.static('./app/styles')
-                                        ),
-                                        connect.static(appConfig.app)
-                                    ];
-                                }
-                            }
-                        },
-            */
-
-            //-------------------------------------------------
-
             test: {
                 options: {
                     port: 9001,
@@ -547,54 +460,7 @@ module.exports = function(grunt) {
                 configFile: 'test/karma.conf.js',
                 singleRun: true
             }
-        },
-        //----------------------------------------------------
-        // -> added
-        replace: {
-            /*
-            defaultI18n: {
-                options: {
-                    patterns: [{
-                        match: 'content',
-                        replacement: '<%= JSON.stringify(grunt.file.readJSON(\'./app/i18n/en.json\')) %>'
-                    }]
-                },
-                files: [{
-                    expand: true,
-                    flatten: true,
-                    src: ['./config/defaultI18n.js'],
-                    dest: '<%= yeoman.app %>/scripts/services/'
-                }]
-            },
-            */
-            development: {
-                options: {
-                    patterns: [{
-                        json: grunt.file.readJSON('./config/environments/development.json')
-                    }]
-                },
-                files: [{
-                    expand: true,
-                    flatten: true,
-                    src: ['./config/config.js'],
-                    dest: '<%= yeoman.app %>/scripts/services/'
-                }]
-            },
-            production: {
-                options: {
-                    patterns: [{
-                        json: grunt.file.readJSON('./config/environments/production.json')
-                    }]
-                },
-                files: [{
-                    expand: true,
-                    flatten: true,
-                    src: ['./config/config.js'],
-                    dest: '<%= yeoman.app %>/scripts/services/'
-                }]
-            }
         }
-        //----------------------------------------------------
     });
 
 
@@ -608,10 +474,6 @@ module.exports = function(grunt) {
             'wiredep',
             'concurrent:server',
             'postcss:server',
-
-            // Added by hand
-            'configureProxies:server',
-
             'connect:livereload',
             'watch'
         ]);
@@ -655,17 +517,4 @@ module.exports = function(grunt) {
         'test',
         'build'
     ]);
-
-    //--------------------------------------------------
-    // -> Added
-    grunt.registerTask('development', [
-        'replace:development'
-        // Add further deploy related tasks here
-    ]);
-
-    grunt.registerTask('production', [
-        'replace:production'
-        // Add further deploy related tasks here
-    ]);
-    //--------------------------------------------------
 };

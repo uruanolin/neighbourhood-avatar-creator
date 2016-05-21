@@ -12,6 +12,8 @@ router.post('/', function(req, res, next) {
     User.findOne({
         name: req.body.username
     }, function(err, user) {
+console.log(req.body.username);
+console.log(req.body.password);
 
         if (err) throw err;
 
@@ -21,7 +23,7 @@ router.post('/', function(req, res, next) {
                 message: 'Authentication failed. User not found.'
             });
         } else if (user) {
-
+console.log(user);
             // check if password matches
             if (user.password != req.body.password) {
                 res.json({
