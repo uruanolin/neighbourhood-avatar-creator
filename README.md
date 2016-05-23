@@ -1,14 +1,8 @@
-
-//---------------------//
-//-----> Landing <-----//
-//---------------------//
-
-ScrollMagic
-
 //---------------------------//
 //-----> Avatar Editor <-----//
 //---------------------------//
 
+Landing -> scrollMagic
 
 # neighbourhood-avatar-creator
 

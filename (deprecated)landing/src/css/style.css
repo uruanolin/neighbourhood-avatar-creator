@@ -1,92 +1,13 @@
-$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/"; // bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-// endbower
-.browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
-}
-body {
-    padding: 0;
-}
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.footer,
-.header,
-.marketing {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-/* Custom page header */
-.header {
-    border-bottom: 1px solid #e5e5e5;
-    margin-bottom: 10px;
-    /* Make the masthead heading the same height as the navigation */
-    h3 {
-        margin-top: 0;
-        margin-bottom: 0;
-        line-height: 40px;
-        padding-bottom: 19px;
-    }
-}
-/* Custom page footer */
-.footer {
-    padding-top: 19px;
-    color: #777;
-    border-top: 1px solid #e5e5e5;
-}
-.container-narrow > hr {
-    margin: 30px 0;
-}
-/* Main marketing message and sign up button */
-.jumbotron {
-    text-align: center;
-    border-bottom: 1px solid #e5e5e5;
-    .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-    }
-}
-/* Supporting marketing content */
-.marketing {
-    margin: 40px 0;
-    p + h4 {
-        margin-top: 28px;
-    }
-}
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-    .container {
-        max-width: 730px;
-    }
-    /* Remove the padding we set earlier */
-    .footer,
-    .header,
-    .marketing {
-        padding-left: 0;
-        padding-right: 0;
-    }
-    /* Space out the masthead */
-    .header {
-        margin-bottom: 30px;
-    }
-    /* Remove the bottom border on the jumbotron for visual effect */
-    .jumbotron {
-        border-bottom: 0;
-    }
-}
-/////////////////////////////////
 body {
     font: 16px/1.5 'Open Sans', Helvetica, Helvetica Neue, Arial, sans-serif;
     color: rgba(0, 0, 0, 0.9);
 }
-body,
-html {
+html, body {
     height: 100%;
     margin: 0;
 }
 h1 {
-    padding: 20% 0 0;
+    padding: 20% 0 0 0;
     margin: 0;
     text-align: center;
     font-size: 36px;
@@ -117,12 +38,16 @@ section {
     position: relative;
     text-align: center;
 }
+
 /* Center aligned first section */
+
 section .inner {
     margin: 0 auto;
     max-width: 85%;
 }
+
 /* Content of the following sections aligned next to the iphone */
+
 section .innerText {
     position: absolute;
     top: 50%;
@@ -130,7 +55,9 @@ section .innerText {
     transform: translate(-100px, -50%);
     text-align: left;
 }
+
 /* iPhone/Card positioned to the left - this is a default position */
+
 .iphone {
     width: 290px;
     height: 600px;
@@ -143,7 +70,9 @@ section .innerText {
     background-image: -webkit-radial-gradient(#81bcff, #5d7fce);
     background-image: radial-gradient(#81bcff, #5d7fce);
 }
+
 /* Centered content of the ScrollMagic card */
+
 .iphone p {
     font-size: 140px;
     margin: 0;
@@ -153,21 +82,25 @@ section .innerText {
     transform: translate(-50%, -50%);
     color: rgba(255, 255, 255, 0.9);
 }
+
 /* Letters hidden by default */
-.iphone p.screenA,
-.iphone p.screenB,
-.iphone p.screenC {
+
+.iphone p.screenA, .iphone p.screenB, .iphone p.screenC {
     opacity: 0;
     visibility: hidden;
 }
+
 /* ScrollMagic hat on top of letters */
+
 .iphone p.screenHat {
     z-index: 2;
 }
 .iphone p.screenHat img {
     max-width: 130px;
 }
+
 /* Bullet list */
+
 .features {
     list-style: none;
     margin: 0;
@@ -178,7 +111,9 @@ section .innerText {
     position: relative;
     padding-left: 17px;
 }
+
 /* A heart instead of a bullet */
+
 .features li:before {
     content: '❤';
     font-size: 11px;
