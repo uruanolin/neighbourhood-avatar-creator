@@ -33,15 +33,25 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
-      .when('/magicScrollTest', {
-        templateUrl: 'views/magicscrolltest.html',
-        controller: 'MagicscrolltestCtrl',
-        controllerAs: 'magicScrollTest'
-      })
       .when('/admin', {
         templateUrl: 'views/admin.html',
         controller: 'AdminCtrl',
         controllerAs: 'admin'
+      })
+      .when('/editor', {
+        templateUrl: 'views/editor.html',
+        controller: 'EditorCtrl',
+        controllerAs: 'editor'
+      })
+      .when('/question', {
+        templateUrl: 'views/question.html',
+        controller: 'QuestionCtrl',
+        controllerAs: 'question'
+      })
+      .when('/share', {
+        templateUrl: 'views/share.html',
+        controller: 'ShareCtrl',
+        controllerAs: 'share'
       })
       .otherwise({
         redirectTo: '/'

@@ -17,8 +17,7 @@
     <body ng-app="neighbourhoodAvatarCreatorApp">
         <!--[if lte IE 8]> <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> <![endif]-->
 
-        <div class="container">
-            <div ng-view=""></div>
+        <div ng-view="" style="height: 100%; width: 100%;">
         </div>
 
         <!-- build:js(.) scripts/vendor.js -->
@@ -34,19 +33,22 @@
         <script src="bower_components/angular-touch/angular-touch.js"></script>
         <script src="bower_components/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js"></script>
         <script src="bower_components/gsap/src/uncompressed/TweenMax.js"></script>
+        <script src="bower_components/angular-socialshare/dist/angular-socialshare.min.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
         <script src="bower_components/gsap/src/minified/jquery.gsap.min.js"></script>
-        
+
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/magicscrolltest.js"></script>
         <script src="scripts/controllers/admin.js"></script>
         <script src="scripts/services/authenticate.js"></script>
         <script src="scripts/directives/adminlogin.js"></script>
+        <script src="scripts/controllers/editor.js"></script>
+        <script src="scripts/controllers/question.js"></script>
+        <script src="scripts/controllers/share.js"></script>
         <!-- endbuild -->
 
         <script src="scripts/services/config.js"></script>
