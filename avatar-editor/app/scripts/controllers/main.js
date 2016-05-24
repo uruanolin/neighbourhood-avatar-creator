@@ -8,10 +8,13 @@
  * Controller of the neighbourhoodAvatarCreatorApp
  */
 angular.module('neighbourhoodAvatarCreatorApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+    .controller('MainCtrl', function() {
+
+        /*
+        this.language = null;
+        this.district = null;
+        */
+
+        // crear directive para el LANGUAGE click
+        // diretive para el DISTRICT click
+    });
