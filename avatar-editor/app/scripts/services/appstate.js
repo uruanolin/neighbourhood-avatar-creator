@@ -16,7 +16,7 @@
         var state = {
             district: null,
             name: null,
-            sex: null,
+            gender: null,
             avatarConf: {
 
             },
@@ -38,6 +38,14 @@
 
         function getName() {
             return state.name;
+        }
+
+        function setGender(gender) {
+            state.gender = gender;
+        }
+
+        function getGender() {
+            return state.gender;
         }
 
         function setAvatarConf(conf) {
@@ -77,6 +85,8 @@
             getDistrict: getDistrict,
             setName: setName,
             getName: getName,
+            setGender: setGender,
+            getGender: getGender,
             setAvatarConf: setAvatarConf,
             getAvatarConf: getAvatarConf,
             setQuestion: setQuestion,
