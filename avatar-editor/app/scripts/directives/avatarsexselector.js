@@ -6,6 +6,7 @@
  * @description
  * # avatarSexSelector
  */
+ 
 angular.module('neighbourhoodAvatarCreatorApp')
     .directive('avatarSexSelector', function(appState) {
         return {
@@ -26,9 +27,6 @@ angular.module('neighbourhoodAvatarCreatorApp')
 
                 scope.sexselector.selectGender = function (gender) {
                     appState.setGender(gender);
-
-                    console.log(appState.getGender());
-
                     // -> render dressroom directive in 'editor' route
                     scope.renderdressroom = true;
                 };

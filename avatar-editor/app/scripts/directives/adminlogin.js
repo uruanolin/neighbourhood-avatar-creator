@@ -6,6 +6,7 @@
  * @description
  * # adminLogin
  */
+ 
 angular.module('neighbourhoodAvatarCreatorApp')
     .directive('adminLogin', function(authenticate) {
         return {

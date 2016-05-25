@@ -8,7 +8,7 @@
  * Controller of the neighbourhoodAvatarCreatorApp
  */
 angular.module('neighbourhoodAvatarCreatorApp')
-    .controller('EditorCtrl', function(appState) {
+    .controller('EditorCtrl', function() {
 
         this.dressroom = false;
     });

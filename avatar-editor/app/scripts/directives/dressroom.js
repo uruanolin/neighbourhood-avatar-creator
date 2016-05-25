@@ -14,7 +14,7 @@ angular.module('neighbourhoodAvatarCreatorApp')
                 var result;
                 if (appState.getGender() === 'male') {
                     result = 'views/dressroomman.html';
-                }else if (appState.getGender() === 'female') {
+                } else if (appState.getGender() === 'female') {
                     result = 'views/dressroomwoman.html';
                 }
                 return result;
@@ -37,6 +37,16 @@ angular.module('neighbourhoodAvatarCreatorApp')
                     selectTopClothe: null,
                     selectBottomClothe: null,
                     shoes: null
+                };
+
+                this.showBaf = {
+                    skinColor: false,
+                    hair: false,
+                    glasses: false,
+                    moustacheOrLips: false,
+                    topClothe: false,
+                    bottomClothe: false,
+                    shoes: false
                 };
             },
             link: function postLink(scope /*, element, attrs*/ ) {
@@ -74,8 +84,39 @@ angular.module('neighbourhoodAvatarCreatorApp')
                 }
 
 
-                scope.dressroom.openMenu = function() {
-                    console.log('svg click');
+                scope.dressroom.openMenu = function(option) {
+                    scope.dressroom.showBaf[option] = true;
+                    console.log('enter');
+                };
+
+                scope.dressroom.closeMenu = function(option) {
+
+                    console.log('LEAVE');
+
+                    scope.dressroom.showBaf[option] = false;
+                };
+
+                scope.dressroom.closeAllMenu = function() {
+                    for (var property in scope.dressroom.showBaf) {
+                        if (scope.dressroom.showBaf.hasOwnProperty(property)) {
+                            scope.dressroom.showBaf[property] = false;
+                        }
+                    }
+                };
+
+                scope.dressroom.clickMenu = function(option) {
+
+                    console.log('mmmmmmmmmmmmm ');
+                    for (var property in scope.dressroom.showBaf) {
+                        if (scope.dressroom.showBaf.hasOwnProperty(property)) {
+                            // do stuff
+                            if (property === option) {
+                                scope.dressroom.showBaf[property] = !scope.dressroom.showBaf[property];
+                            } else {
+                                scope.dressroom.showBaf[property] = false;
+                            }
+                        }
+                    }
                 };
 
                 scope.dressroom.setAttribue = function(attributeName, elementId) {
