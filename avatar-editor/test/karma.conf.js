@@ -32,6 +32,7 @@ module.exports = function(config) {
       'bower_components/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js',
       'bower_components/gsap/src/uncompressed/TweenMax.js',
       'bower_components/angular-socialshare/dist/angular-socialshare.min.js',
+      'bower_components/angular-translate/angular-translate.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
