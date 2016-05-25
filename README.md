@@ -4,6 +4,9 @@
 
 Landing -> scrollMagic
 
+Social share    -> https://github.com/720kb/angular-socialshare
+                -> https://github.com/djds4rce/angular-socialshare
+
 # neighbourhood-avatar-creator
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
@@ -30,3 +33,5 @@ express framework
 //---------------------//
 //-----> mongoDB <-----//
 //---------------------//
+
+backup de la BD

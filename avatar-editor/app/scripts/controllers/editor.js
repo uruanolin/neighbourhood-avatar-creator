@@ -8,8 +8,7 @@
  * Controller of the neighbourhoodAvatarCreatorApp
  */
 angular.module('neighbourhoodAvatarCreatorApp')
-    .controller('EditorCtrl', function() {
-        this.waka = function() {
-            console.log('perico');
-        };
+    .controller('EditorCtrl', function(appState) {
+
+        this.dressroom = false;
     });

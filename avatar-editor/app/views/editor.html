@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<avatar-sex-selector></avatar-sex-selector>
-<dress-room ng-if="false" gender="man"></dress-room>
+<avatar-sex-selector ng-if="!editor.dressroom" renderdressroom="editor.dressroom"></avatar-sex-selector>
+<dress-room ng-if="editor.dressroom"></dress-room>
 
 <!-- formulario dentro del SVG -->
 <!--

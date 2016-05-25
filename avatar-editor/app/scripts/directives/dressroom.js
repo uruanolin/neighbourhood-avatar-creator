@@ -7,19 +7,16 @@
  * # dressRoom
  */
 angular.module('neighbourhoodAvatarCreatorApp')
-    .directive('dressRoom', function() {
+    .directive('dressRoom', function(appState) {
         return {
             //templateUrl: 'views/dressroom.html',
-            templateUrl: function(elem, attrs) {
-
-                console.log(attrs.gender);
+            templateUrl: function() {
                 var result;
-                if (attrs.gender === 'man') {
-                    result = 'views/dressroom-man.html';
-                }else if (attrs.gender === 'woman') {
-                    result = 'views/dressroom-woman.html';                    
+                if (appState.getGender() === 'male') {
+                    result = 'views/dressroomman.html';
+                }else if (appState.getGender() === 'female') {
+                    result = 'views/dressroomwoman.html';
                 }
-
                 return result;
             },
             restrict: 'E',

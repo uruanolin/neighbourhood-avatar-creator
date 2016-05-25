@@ -11,9 +11,16 @@ angular.module('neighbourhoodAvatarCreatorApp')
         return {
             templateUrl: 'views/avatarsexselector.html',
             restrict: 'E',
+            scope: {
+                renderdressroom: '='
+            },
             controllerAs: 'sexselector',
             controller: function () {
                 var sexselector = this;
+                sexselector.male = {};
+                sexselector.female = {};
+                sexselector.male.hover = false;
+                sexselector.female.hover = false;
             },
             link: function postLink(scope/*, element, attrs*/) {
 
@@ -21,6 +28,17 @@ angular.module('neighbourhoodAvatarCreatorApp')
                     appState.setGender(gender);
 
                     console.log(appState.getGender());
+
+                    // -> render dressroom directive in 'editor' route
+                    scope.renderdressroom = true;
+                };
+
+                scope.sexselector.mouseenter = function (gender) {
+                    scope.sexselector[gender].hover = true;
+                };
+
+                scope.sexselector.mouseleave = function (gender) {
+                    scope.sexselector[gender].hover = false;
                 };
             }
         };
