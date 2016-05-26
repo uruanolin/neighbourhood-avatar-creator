@@ -119,10 +119,10 @@ angular.module('neighbourhoodAvatarCreatorApp')
                     }
                 };
 
-                scope.dressroom.setAttribue = function(attributeName, elementId) {
-                    scope.dressroom[attributeName] = elementId;
-
-                    // Modificar el svg
+                scope.dressroom.setAttribute = function(attributeName, elementId) {
+                    scope.dressroom.conf[attributeName] = elementId;
+                    // Repaint
+                    console.log('patata');
                 };
 
                 scope.dressroom.editionFinished = function() {

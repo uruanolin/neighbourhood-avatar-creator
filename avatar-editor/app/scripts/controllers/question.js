@@ -8,10 +8,7 @@
  * Controller of the neighbourhoodAvatarCreatorApp
  */
 angular.module('neighbourhoodAvatarCreatorApp')
-  .controller('QuestionCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+    .controller('QuestionCtrl', function() {
+
+        //this.gender = appState.getGender();
+    });
