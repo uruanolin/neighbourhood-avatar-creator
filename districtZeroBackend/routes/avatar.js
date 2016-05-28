@@ -6,23 +6,16 @@ var config = require('../config');
 
 router.post('/', function(req, res, next) {
 
+    console.log(req.body);
+
     var newAvatar = Avatar({
 
         //avatarId: mongoose.Schema.Types.ObjectId,
-        district: 'pakito',
-        avatar: {
-            gender: 'pakito',
-            skinColor: 'pakito',
-            hair: 'pakito',
-            glasses: 'pakito',
-            facialComplement: {
-                lips: 'pakito',
-                beard: 'pakito',
-            },
-            wearTop: 'pakito',
-            wearBottom: 'pakito',
-            shoes: 'pakito'
-        }
+        name: req.body.data.name,
+        district: req.body.data.district,
+        gender: req.body.data.gender,
+        avatar: req.body.data.avatarConf,
+        answer: req.body.data.answer
     });
 
     newAvatar.save(function(err) {
