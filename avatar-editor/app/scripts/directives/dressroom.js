@@ -50,6 +50,27 @@ angular.module('neighbourhoodAvatarCreatorApp')
                     bottomClothe: false,
                     shoes: false
                 };
+
+                this.displayElement = {
+                    hair: [false, false, false, false, false, false, false, false, false],
+                    glasses: [false, false, false, false, false, false, false, false, false],
+                    moustacheOrLips: [false, false, false, false, false, false, false],
+                    topClothe: [false, false, false, false, false, false, false, false, false, false],
+                    bottomClothe: [false, false, false, false, false, false, false, false],
+                    shoes: [false, false, false, false, false, false, false, false, false, false]
+                };
+
+                this.skinColorPalette = [
+                    {adret: '#FBCC9A', ubac: '#CB9866'},
+                    {adret: '#E3C8B2', ubac: '#BA8A69'},
+                    {adret: '#E5BEA1', ubac: '#9D7355'},
+                    {adret: '#DDDD89', ubac: '#C0BE60'},
+                    {adret: '#84674E', ubac: '#64442B'},
+                    {adret: '#704D29', ubac: '#422915'}
+                ];
+
+                this.currentSkinColorPalette = this.skinColorPalette[0];
+
             },
             link: function postLink(scope, element /*, attrs*/ ) {
 
@@ -66,13 +87,7 @@ angular.module('neighbourhoodAvatarCreatorApp')
                 var avatarPath = null,
                     dressroomPath = null,
                     svgGroupString = null,
-                    dressroomHTML = null,
-
-                    displayElement = {
-                        skinColor: [true, false, false, false, false, false],
-                        hair: []
-                    };
-
+                    dressroomHTML = null;
 
 
                 if (appState.getGender() === 'male') {
@@ -105,8 +120,8 @@ angular.module('neighbourhoodAvatarCreatorApp')
                                     // cut svg closing tag (</svg>)
                                     svgGroupString = svgGroupString.substring(0, svgGroupString.search('</svg>'));
 
-                                    svgGroupString = '<g transform="translate(960.05, 650)">' + svgGroupString;
-
+                                    svgGroupString = '<g transform="translate(960.05, 540.5)">' + svgGroupString;
+                                    console.log(svgGroupString);
                                     var compiledHTML = $compile(dressroomHTML + svgGroupString + '</svg></div>')(scope);
                                     element.html(compiledHTML);
 
@@ -123,38 +138,13 @@ angular.module('neighbourhoodAvatarCreatorApp')
 
 
 
-                function paintAvatar() {
-
-                    // -> cargar nino
-
-                    // -> skin color
-
-                    // -> fulles?
-
-                    // -> ulleres
-
-                    // -> cabell
-
-                    // -> moustacheOrLips
-
-                    // -> shirt
-                    // -> pants
-
-                    // -> shoes
-
-                    // -> translate Avatar !
-                }
-
-
                 scope.dressroom.openMenu = function(option) {
                     scope.dressroom.showBaf[option] = true;
                     console.log('enter');
                 };
 
                 scope.dressroom.closeMenu = function(option) {
-
                     console.log('LEAVE');
-
                     scope.dressroom.showBaf[option] = false;
                 };
 
@@ -167,11 +157,6 @@ angular.module('neighbourhoodAvatarCreatorApp')
                 };
 
                 scope.dressroom.clickMenu = function(option) {
-
-                    console.log('mmmmmmmmmmmmm ');
-
-                    console.log(scope.dressroom);
-                    console.log(option);
 
                     for (var property in scope.dressroom.showBaf) {
                         if (scope.dressroom.showBaf.hasOwnProperty(property)) {
@@ -187,8 +172,33 @@ angular.module('neighbourhoodAvatarCreatorApp')
 
                 scope.dressroom.setAttribute = function(attributeName, elementId) {
                     scope.dressroom.conf[attributeName] = elementId;
-                    // Repaint
-                    console.log('patata');
+
+                    //elementId.lastIndexOf('_');
+                    var optionNum = elementId.substring(elementId.lastIndexOf('_') + 1);
+
+                    if (optionNum === 'NOTHING') {
+                        scope.dressroom.displayElement[attributeName].forEach(function(boolDisplay) {
+                            boolDisplay = false;
+                        });
+
+                    } else {
+
+                        if (attributeName === 'skinColor') {
+
+                            scope.dressroom.currentSkinColorPalette = this.skinColorPalette[optionNum - 1];
+
+
+                        }else{
+                            scope.dressroom.displayElement[attributeName].forEach(function(boolDisplay, index) {
+
+                                if (index === parseInt(optionNum - 1)) {
+                                    scope.dressroom.displayElement[attributeName][index] = true;
+                                } else {
+                                    scope.dressroom.displayElement[attributeName][index] = false;
+                                }
+                            });
+                        }
+                    }
                 };
 
                 scope.dressroom.editionFinished = function() {
