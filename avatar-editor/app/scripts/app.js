@@ -25,9 +25,20 @@ angular
     .config(function($routeProvider) {
         $routeProvider
             .when('/', {
+                /*
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl',
                 controllerAs: 'main'
+                */
+
+                templateUrl: 'views/editor.html',
+                controller: 'EditorCtrl',
+                controllerAs: 'editor',
+                resolve: {
+                    'selectedDistrict': function (appState) {
+                        return appState.getDistrictPromise();
+                    }
+                }
             })
             .when('/about', {
                 templateUrl: 'views/about.html',
@@ -75,25 +86,27 @@ angular
     })
     .config(['$translateProvider', function($translateProvider) {
 
-        $translateProvider.translations('en', {
-            'TITLE': 'Hello',
-            'FOO': 'This is a paragraph'
+        $translateProvider.translations('es', {
+            'QUESTION_P1': '¿ME AYUDAS?',
+            'QUESTION_P2': '¿DE QUÉ',
+            'QUESTION_P3': 'DISTRITO SOY?'
         });
 
-        $translateProvider.translations('de', {
-            'TITLE': 'Hallo',
-            'FOO': 'Dies ist ein Absatz'
+        $translateProvider.translations('cat', {
+            'QUESTION_P1': 'M’AJUDES ?',
+            'QUESTION_P2': 'DE QUIN',
+            'QUESTION_P3': 'DISTRICTE SÓC?'
         });
 
-        $translateProvider.preferredLanguage('de');
+        $translateProvider.preferredLanguage('cat');
     }])
 
     .run(function($rootScope, $location) {
 
         $rootScope.$on('$routeChangeError', function(/*event,data*/) {
-console.log('asasasasas');
 
-//data.$$route.originalPath
+            console.log('$routeChangeError');
+            //data.$$route.originalPath
             $location.path('/');
         });
     });

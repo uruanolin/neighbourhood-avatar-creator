@@ -206,6 +206,7 @@ angular.module('neighbourhoodAvatarCreatorApp')
                     // -> Verification
 
                     // -> save avatar conf
+                    appState.setAvatarConf(scope.dressroom.conf);
 
                     // -> redirect to /question
                     $location.path('/question');

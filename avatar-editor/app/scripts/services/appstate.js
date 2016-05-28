@@ -18,7 +18,6 @@
             name: null,
             gender: null,
             avatarConf: null,
-            question: null,
             answer: null
         };
 
@@ -54,14 +53,6 @@
             return state.avatarConf;
         }
 
-        function setQuestion(question) {
-            state.question = question;
-        }
-
-        function getQuestion() {
-            return state.question;
-        }
-
         function setAnswer(answer) {
             state.answer = answer;
         }
@@ -78,6 +69,10 @@
             return state.image;
         }
 
+        function getState() {
+            return state;
+        }
+
         function getDistrictPromise() {
 //CHANGE !!!!!!!!!!
             return 'algoo';
@@ -88,7 +83,7 @@
         }
 
         function getAvatarConfPromise() {
-state.avatarConf={};
+
             if (state.avatarConf === null) {
                 return $q.reject();
             }
@@ -96,7 +91,7 @@ state.avatarConf={};
         }
 
         function getAnswerPromise() {
-
+console.log('dsdsdsds');
             if (state.answer === null) {
                 return $q.reject();
             }
@@ -112,15 +107,14 @@ state.avatarConf={};
             getGender: getGender,
             setAvatarConf: setAvatarConf,
             getAvatarConf: getAvatarConf,
-            setQuestion: setQuestion,
-            getQuestion: getQuestion,
             setAnswer: setAnswer,
             getAnswer: getAnswer,
             setImage: setImage,
             getImage: getImage,
             getDistrictPromise: getDistrictPromise,
             getAvatarConfPromise: getAvatarConfPromise,
-            getAnswerPromise: getAnswerPromise
+            getAnswerPromise: getAnswerPromise,
+            getState: getState
         };
     }
 

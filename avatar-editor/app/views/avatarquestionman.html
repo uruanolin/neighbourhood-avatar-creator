@@ -91,7 +91,7 @@
     				<polygon fill="#531E53" points="993.6,901.8 1062.2,902.9 1062.8,891.4 1057.5,880.5 993.8,887.3 			"/>
     			</g>
     		</g>
-    		<g id="SERRIA_SANT_GERV" ng-if="question.display[1]">
+    		<g id="SARRIA_SANT_GERVASI" ng-if="question.display[1]">
     			<g>
     				<path
     					fill="#FBCC9A"
@@ -1163,7 +1163,15 @@
     		</g>
     	</g>
 
-    	<g id="NOM_SANT_MARTI">
+
+
+
+
+
+
+
+
+        <g id="NOM_SANT_MARTI" ng-if="question.displayAnswer[0]" ng-click="question.answer(1)" class="clickable">
     		<path
     			opacity="0.4"
     			fill="#FFFFFF"
@@ -1181,8 +1189,7 @@
     		l-327.4,2.1l0,0l0,0l-27.3,0.1l-49.7,11.1C1215.4,506.8,1207.4,493.9,1214.6,485.1z"/>
     		<text transform="matrix(1 0 0 1 1299.3291 446.9335)" fill="#3D3D3B" font-family="'FuturaStd-Bold'" font-size="45.4336">SANT MARTÍ</text>
     	</g>
-
-    	<g id="NOM_SERRIA_SANT_GERVASI">
+    	<g id="NOM_SARRIA_SANT_GERVASI" ng-if="question.displayAnswer[1]" ng-click="question.answer(1)" class="clickable">
     		<path
     			opacity="0.4"
     			fill="#FFFFFF"
@@ -1200,8 +1207,7 @@
     		l-578.5,2.1l0,0l0,0l-27.3,0.1l-49.7,11.1C1215.4,679.7,1207.4,666.8,1214.6,658.1z"/>
     		<text transform="matrix(1 0 0 1 1299.3291 619.8549)" fill="#3D3D3B" font-family="'FuturaStd-Bold'" font-size="45.4336">SERRIÀ - SANT GERVASI</text>
     	</g>
-
-    	<g id="NOM_CIUTAT_VELLA">
+    	<g id="NOM_CIUTAT_VELLA" ng-if="question.displayAnswer[2]" ng-click="question.answer(1)" class="clickable">
     		<path
     			opacity="0.4"
     			fill="#FFFFFF"
@@ -1219,8 +1225,7 @@
     		l-327.4,2.1l0,0l0,0l-27.3,0.1l-49.7,11.1C1215.4,506.8,1207.4,493.9,1214.6,485.1z"/>
     		<text transform="matrix(1 0 0 1 1299.3291 446.9335)" fill="#3D3D3B" font-family="'FuturaStd-Bold'" font-size="45.4336">CIUTAT VELLA</text>
     	</g>
-
-    	<g id="NOM_SANTS_MONTJUIC">
+    	<g id="NOM_SANTS_MONTJUIC" ng-if="question.displayAnswer[3]" ng-click="question.answer(1)" class="clickable">
     		<path
     			opacity="0.4"
     			fill="#FFFFFF"
@@ -1238,8 +1243,7 @@
     		l-481.1,2.1l0,0l0,0l-27.3,0.1l-49.7,11.1C1215.4,679.7,1207.4,666.8,1214.6,658.1z"/>
     		<text transform="matrix(1 0 0 1 1299.3291 619.8549)" fill="#3D3D3B" font-family="'FuturaStd-Bold'" font-size="45.4336">SANTS - MONTJUÏC</text>
     	</g>
-
-    	<g id="NOM_LES_CORTS">
+    	<g id="NOM_LES_CORTS" ng-if="question.displayAnswer[4]" ng-click="question.answer(1)" class="clickable">
     		<path
     			opacity="0.4"
     			fill="#FFFFFF"
@@ -1257,8 +1261,7 @@
     		l-255.6,2.1l0,0l0,0l-27.3,0.1l-49.7,11.1C1215.4,329.1,1207.4,316.2,1214.6,307.5z"/>
     		<text transform="matrix(1 0 0 1 1299.3291 269.2782)" fill="#3D3D3B" font-family="'FuturaStd-Bold'" font-size="45.4336">LES CORTS</text>
     	</g>
-
-    	<g id="NOM_GRACIA">
+    	<g id="NOM_GRACIA" ng-if="question.displayAnswer[5]" ng-click="question.answer(1)" class="clickable">
     		<path
     			opacity="0.4"
     			fill="#FFFFFF"
@@ -1276,8 +1279,7 @@
     		l-255.6,2.1l0,0l0,0l-27.3,0.1l-49.7,11.1C1215.4,329.1,1207.4,316.2,1214.6,307.5z"/>
     		<text transform="matrix(1 0 0 1 1299.3291 269.2782)" fill="#3D3D3B" font-family="'FuturaStd-Bold'" font-size="45.4336">GRÀCIA</text>
     	</g>
-
-    	<g id="NOM_HORTA_GUINARDO">
+    	<g id="NOM_HORTA_GUINARDO" ng-if="question.displayAnswer[6]" ng-click="question.answer(1)" class="clickable">
     		<path
     			opacity="0.4"
     			fill="#FFFFFF"
@@ -1295,8 +1297,7 @@
     		l-498.8,2.1l0,0l0,0l-27.3,0.1l-49.7,11.1C1215.4,679.7,1207.4,666.8,1214.6,658.1z"/>
     		<text transform="matrix(1 0 0 1 1299.3291 619.8549)" fill="#3D3D3B" font-family="'FuturaStd-Bold'" font-size="45.4336">HORTA - GUINARDÓ</text>
     	</g>
-
-    	<g id="NOM_SANT_ANDREU">
+    	<g id="NOM_SANT_ANDREU" ng-if="question.displayAnswer[7]" ng-click="question.answer(1)" class="clickable">
     		<path
     			opacity="0.4"
     			fill="#FFFFFF"
@@ -1314,8 +1315,7 @@
     		l-357,2.1l0,0l0,0l-27.3,0.1l-49.7,11.1C1215.4,506.8,1207.4,493.9,1214.6,485.1z"/>
     		<text transform="matrix(1 0 0 1 1299.3291 446.9335)" fill="#3D3D3B" font-family="'FuturaStd-Bold'" font-size="45.4336">SANT ANDREU</text>
     	</g>
-
-    	<g id="NOM_EIXAMPLE">
+    	<g id="NOM_EIXAMPLE" ng-if="question.displayAnswer[8]" ng-click="question.answer(1)" class="clickable">
     		<path
     			opacity="0.4"
     			fill="#FFFFFF"
@@ -1333,8 +1333,7 @@
     		l-255.6,2.1l0,0l0,0l-27.3,0.1l-49.7,11.1C1215.4,329.1,1207.4,316.2,1214.6,307.5z"/>
     		<text transform="matrix(1 0 0 1 1299.3291 269.2782)" fill="#3D3D3B" font-family="'FuturaStd-Bold'" font-size="45.4336">EIXAMPLE</text>
     	</g>
-
-    	<g id="NOM_NOU_BARRIS">
+    	<g id="NOM_NOU_BARRIS" ng-if="question.displayAnswer[9]" ng-click="question.answer(1)" class="clickable">
     		<path
     			opacity="0.4"
     			fill="#FFFFFF"
@@ -1353,33 +1352,7 @@
     		<text transform="matrix(1 0 0 1 1299.3291 446.9335)" fill="#3D3D3B" font-family="'FuturaStd-Bold'" font-size="45.4336">NOU BARRIS</text>
     	</g>
 
-    	<g id="PREGUNTA_CAST" display="none">
-    		<path
-    			display="inline"
-    			opacity="0.4"
-    			fill="#FFFFFF"
-    			d="M753.3,428.8l-35.7-43.5c-3.2-3.9-4.9-8.7-4.9-13.7v-49.4
-    		c0-7.9-6.4-14.3-14.3-14.3H172.8c-7.6,0-13.7,6.1-13.7,13.7v291.6c0,7.5,6,13.5,13.5,13.5h492c7.5,0,13.6-6.1,13.6-13.6V447.6
-    		c0-7.1,6.6-12.4,13.6-10.9l49.7,11.1C752.5,450.4,760.4,437.5,753.3,428.8z"/>
-    		<path
-    			display="inline"
-    			fill="none"
-    			stroke="#3D3D3C"
-    			stroke-width="11"
-    			stroke-miterlimit="10"
-    			d="M753.3,431.5L717.6,388
-    		c-3.2-3.9-4.9-8.7-4.9-13.7v-49.4c0-7.9-6.4-14.3-14.3-14.3H172.8c-7.6,0-13.7,6.1-13.7,13.7V616c0,7.5,6,13.5,13.5,13.5h492
-    		c7.5,0,13.6-6.1,13.6-13.6V450.3c0-7.1,6.6-12.4,13.6-10.9l49.7,11.1C752.5,453.1,760.4,440.2,753.3,431.5z"/>
 
-    		<line display="inline" fill="none" stroke="#3D3D3C" stroke-width="11" stroke-linecap="round" stroke-miterlimit="10" x1="193.4" y1="418.5" x2="335.3" y2="418.5"/>
-    		<rect x="187.5" y="346" display="inline" fill="none" width="486.9" height="258"/>
-    		<text transform="matrix(1 0 0 1 187.4713 389.3755)" display="inline">
-    			<tspan x="0" y="0" fill="#3D3D3B" font-family="'FuturaStd-Medium'" font-size="50">ME AYUDAS ?</tspan>
-    			<tspan x="0" y="157.2" fill="#3D3D3B" font-family="'FuturaStd-Bold'" font-size="41">DE QUE
-    			</tspan>
-    			<tspan x="0" y="206.4" fill="#3D3D3B" font-family="'FuturaStd-Bold'" font-size="41">DISTRITO SOY?</tspan>
-    		</text>
-    	</g>
 
     	<g id="PREGUNTA_CAT">
     		<path
@@ -1398,9 +1371,9 @@
     		c7.5,0,13.6-6.1,13.6-13.6V449.1c0-7.1,6.6-12.4,13.6-10.9l49.7,11.1C751.6,451.9,759.5,439,752.4,430.3z"/>
     		<rect x="187.5" y="346" fill="none" width="486.9" height="258"/>
     		<text transform="matrix(1 0 0 1 187.4713 389.3755)">
-    			<tspan x="0" y="0" fill="#3D3D3B" font-family="'FuturaStd-Medium'" font-size="50">M’AJUDES ?</tspan>
-    			<tspan x="0" y="157.2" fill="#3D3D3B" font-family="'FuturaStd-Bold'" font-size="41">DE QUIN</tspan>
-    			<tspan x="0" y="206.4" fill="#3D3D3B" font-family="'FuturaStd-Bold'" font-size="41">DISTRICTE SÓC?</tspan>
+                <tspan x="0" y="0" fill="#3D3D3B" font-family="'FuturaStd-Medium'" font-size="50">{{ 'QUESTION_P1' | translate }}</tspan>
+    			<tspan x="0" y="157.2" fill="#3D3D3B" font-family="'FuturaStd-Bold'" font-size="41">{{ 'QUESTION_P2' | translate }}</tspan>
+                <tspan x="0" y="206.4" fill="#3D3D3B" font-family="'FuturaStd-Bold'" font-size="41">{{ 'QUESTION_P3' | translate }}</tspan>
     		</text>
 
     		<line fill="none" stroke="#3D3D3C" stroke-width="11" stroke-linecap="round" stroke-miterlimit="10" x1="192.5" y1="417.3" x2="334.4" y2="417.3"/>
