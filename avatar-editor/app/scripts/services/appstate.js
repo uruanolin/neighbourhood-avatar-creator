@@ -11,15 +11,13 @@
 
 (function() {
 
-    function appState() {
+    function appState($q) {
 
         var state = {
             district: null,
             name: null,
             gender: null,
-            avatarConf: {
-
-            },
+            avatarConf: null,
             question: null,
             answer: null
         };
@@ -80,6 +78,31 @@
             return state.image;
         }
 
+        function getDistrictPromise() {
+//CHANGE !!!!!!!!!!
+            return 'algoo';
+            if (state.district === null) {
+                return $q.reject();
+            }
+            //return state.district;
+        }
+
+        function getAvatarConfPromise() {
+state.avatarConf={};
+            if (state.avatarConf === null) {
+                return $q.reject();
+            }
+            return state.avatarConf;
+        }
+
+        function getAnswerPromise() {
+
+            if (state.answer === null) {
+                return $q.reject();
+            }
+            return state.answer;
+        }
+
         return {
             setDistrict: setDistrict,
             getDistrict: getDistrict,
@@ -94,7 +117,10 @@
             setAnswer: setAnswer,
             getAnswer: getAnswer,
             setImage: setImage,
-            getImage: getImage
+            getImage: getImage,
+            getDistrictPromise: getDistrictPromise,
+            getAvatarConfPromise: getAvatarConfPromise,
+            getAnswerPromise: getAnswerPromise
         };
     }
 

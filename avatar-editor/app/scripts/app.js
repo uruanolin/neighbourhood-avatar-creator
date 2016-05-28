@@ -42,17 +42,32 @@ angular
             .when('/editor', {
                 templateUrl: 'views/editor.html',
                 controller: 'EditorCtrl',
-                controllerAs: 'editor'
+                controllerAs: 'editor',
+                resolve: {
+                    'selectedDistrict': function (appState) {
+                        return appState.getDistrictPromise();
+                    }
+                }
             })
             .when('/question', {
                 templateUrl: 'views/question.html',
                 controller: 'QuestionCtrl',
-                controllerAs: 'question'
+                controllerAs: 'question',
+                resolve: {
+                    'selectedAvatarConf': function (appState) {
+                        return appState.getAvatarConfPromise();
+                    }
+                }
             })
             .when('/share', {
                 templateUrl: 'views/share.html',
                 controller: 'ShareCtrl',
-                controllerAs: 'share'
+                controllerAs: 'share',
+                resolve: {
+                    'selectedAnswer': function (appState) {
+                        return appState.getAnswerPromise();
+                    }
+                }
             })
             .otherwise({
                 redirectTo: '/'
@@ -71,4 +86,14 @@ angular
         });
 
         $translateProvider.preferredLanguage('de');
-    }]);
+    }])
+
+    .run(function($rootScope, $location) {
+
+        $rootScope.$on('$routeChangeError', function(/*event,data*/) {
+console.log('asasasasas');
+
+//data.$$route.originalPath
+            $location.path('/');
+        });
+    });

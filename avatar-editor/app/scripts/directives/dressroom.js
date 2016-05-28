@@ -7,7 +7,7 @@
  * # dressRoom
  */
 angular.module('neighbourhoodAvatarCreatorApp')
-    .directive('dressRoom', function(appState, $http, $q, $compile) {
+    .directive('dressRoom', function(appState, $http, $q, $compile, $location) {
         return {
             //templateUrl: 'views/dressroom.html',
             /*
@@ -208,6 +208,7 @@ angular.module('neighbourhoodAvatarCreatorApp')
                     // -> save avatar conf
 
                     // -> redirect to /question
+                    $location.path('/question');
                 };
             }
         };

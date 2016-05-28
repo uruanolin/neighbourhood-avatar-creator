@@ -11,6 +11,8 @@ angular.module('neighbourhoodAvatarCreatorApp')
         return {
             templateUrl: function() {
                 var result;
+
+                console.log(appState.getGender());
                 if (appState.getGender() === 'male') {
                     result = 'views/avatarquestionman.html';
                 } else if (appState.getGender() === 'female') {
@@ -20,15 +22,21 @@ angular.module('neighbourhoodAvatarCreatorApp')
             },
             restrict: 'E',
             controllerAs: 'question',
-            controller: function () {
+            controller: function() {
 
                 // igual es innecesario
                 var question = this;
                 question.gender = appState.getGender();
 
-                // obtener un barrio random
+                function getRandomInt(min, max) {
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
+                }
+
+                question.id = getRandomInt(0,9);
+                question.display = [false, false, false, false, false, false, false, false, false, false];
+                question.display[question.id] = true;
             },
-            link: function postLink(/*scope, element, attrs*/) {
+            link: function postLink( /*scope, element, attrs*/ ) {
 
                 // -> cargar monigote
                 // -> ocultar resto de monigotes
