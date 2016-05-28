@@ -108,7 +108,7 @@ angular.module('neighbourhoodAvatarCreatorApp')
 
                             dressroomHTML = response1.data.substring(0, response1.data.search('</svg>'));
 
-                            $http.get(avatarPath, {
+                            return $http.get(avatarPath, {
 
                                     params: {}
                                 })
