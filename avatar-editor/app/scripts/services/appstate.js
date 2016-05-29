@@ -18,7 +18,11 @@
             name: null,
             gender: null,
             avatarConf: null,
-            answer: null
+            answer: null,
+            avatarHtml: null,
+            finalScreenshotHtml: null,
+            finalScreenshotPath: null,
+            finalScreenShotURI: null
         };
 
         function setDistrict(district) {
@@ -69,8 +73,41 @@
             return state.image;
         }
 
+        // there's no set method
         function getState() {
             return state;
+        }
+
+        function setAvatarHtml(html) {
+            state.avatarHtml = html;
+        }
+
+        function getAvatarHtml() {
+            return state.avatarHtml;
+        }
+
+        function setFinalScreenshotHtml(html) {
+            state.finalScreenshotHtml = html;
+        }
+
+        function getFinalScreenshotHtml() {
+            return state.finalScreenshotHtml;
+        }
+
+        function setFinalScreenshotPath(path) {
+            state.finalScreenshotPath = path;
+        }
+
+        function getFinalScreenshotPath() {
+            return state.finalScreenshotPath;
+        }
+
+        function setFinalScreenshotURI(uri) {
+            state.finalScreenShotURI = uri;
+        }
+
+        function getFinalScreenshotURI(){
+            return state.finalScreenShotURI;
         }
 
         function getDistrictPromise() {
@@ -114,7 +151,15 @@ console.log('dsdsdsds');
             getDistrictPromise: getDistrictPromise,
             getAvatarConfPromise: getAvatarConfPromise,
             getAnswerPromise: getAnswerPromise,
-            getState: getState
+            getState: getState,
+            setAvatarHtml: setAvatarHtml,
+            getAvatarHtml: getAvatarHtml,
+            setFinalScreenshotHtml: setFinalScreenshotHtml,
+            getFinalScreenshotHtml: getFinalScreenshotHtml,
+            setFinalScreenshotPath: setFinalScreenshotPath,
+            getFinalScreenshotPath: getFinalScreenshotPath,
+            setFinalScreenshotURI: setFinalScreenshotURI,
+            getFinalScreenshotURI: getFinalScreenshotURI
         };
     }
 

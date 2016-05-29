@@ -7,11 +7,11 @@
  * # ShareCtrl
  * Controller of the neighbourhoodAvatarCreatorApp
  */
-angular.module('neighbourhoodAvatarCreatorApp')
-  .controller('ShareCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+
+(function() {
+
+    angular.module('neighbourhoodAvatarCreatorApp')
+        .controller('ShareCtrl', function() {
+
+        });
+})();

@@ -122,7 +122,7 @@ angular.module('neighbourhoodAvatarCreatorApp')
                                     svgGroupString = svgGroupString.substring(0, svgGroupString.search('</svg>'));
 
                                     svgGroupString = '<g transform="translate(960.05, 540.5)">' + svgGroupString;
-                                    console.log(svgGroupString);
+                                    //console.log(svgGroupString);
                                     var compiledHTML = $compile(dressroomHTML + svgGroupString + '</svg></div>')(scope);
                                     element.html(compiledHTML);
 
@@ -209,6 +209,10 @@ angular.module('neighbourhoodAvatarCreatorApp')
 
                     // -> save avatar conf
                     appState.setAvatarConf(scope.dressroom.conf);
+
+                    // -> save avatar raw html
+                    appState.setAvatarHtml(document.getElementById('customized-avatar').innerHTML);
+console.log(document.getElementById('customized-avatar').innerHTML);
 
                     // -> redirect to /question
                     $location.path('/question');

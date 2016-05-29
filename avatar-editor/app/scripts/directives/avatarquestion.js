@@ -7,7 +7,7 @@
  * # avatarQuestion
  */
 angular.module('neighbourhoodAvatarCreatorApp')
-    .directive('avatarQuestion', function(appState, $location, api) {
+    .directive('avatarQuestion', function(appState, $location, api, randomGenerator) {
         return {
             templateUrl: function() {
                 var result;
@@ -27,11 +27,7 @@ angular.module('neighbourhoodAvatarCreatorApp')
                 var question = this;
                 question.gender = appState.getGender();
 
-                function getRandomInt(min, max) {
-                    return Math.floor(Math.random() * (max - min + 1)) + min;
-                }
-
-                question.id = getRandomInt(0, 9);
+                question.id = randomGenerator.getRandomInt(0, 9);
                 question.display = [false, false, false, false, false, false, false, false, false, false];
                 question.display[question.id] = true;
 

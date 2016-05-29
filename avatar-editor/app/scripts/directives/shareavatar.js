@@ -7,7 +7,7 @@
  * # shareAvatar
  */
 angular.module('neighbourhoodAvatarCreatorApp')
-    .directive('shareAvatar', function($http, appState, $q) {
+    .directive('shareAvatar', function($http, appState, $q, randomGenerator) {
         return {
 
             restrict: 'E',
@@ -15,12 +15,24 @@ angular.module('neighbourhoodAvatarCreatorApp')
             controllerAs: 'share',
             controller: function() {
 
-                this.pepito = 'dssdsd';
+                var share = this;
+
+                share.avatarHtml = appState.getAvatarHtml();
+                share.backgroundHtml = null;
+                share.finalShotHtml = null;
+                share.avatarURI = null;
             },
 
             link: function postLink(scope, element /*, attrs*/ ) {
 
-                var sharePath = null;
+                var sharePath = null,
+                    randomInt = randomGenerator.getRandomInt(1, 12);
+
+                if (randomInt < 10) {
+                    randomInt = '0' + randomInt;
+                } else {
+                    randomInt = parseInt(randomInt);
+                }
 
                 if (appState.getGender() === 'male') {
                     sharePath = 'views/sharemaleavatar.html';
@@ -28,45 +40,66 @@ angular.module('neighbourhoodAvatarCreatorApp')
                     sharePath = 'views/sharefemaleavatar.html';
                 }
 
+
+
+
+                /*
+                                //return
+                                $http.get('images/original-svg-share/FONS-' + randomInt + '.svg', {
+
+                                        params: {}
+                                    })
+                                    .then(function(response) {
+
+                                        scope.share.backgroundHtml = response.data;
+
+                                        // cut svg closing tag (</svg>)
+                                        scope.share.backgroundHtml = scope.share.backgroundHtml.substring(0, scope.share.backgroundHtml.search('</svg>'));
+
+                                        scope.share.finalShotHtml = scope.share.backgroundHtml + '<g transform="translate(310,550) scale(1.2)">' + scope.share.avatarHtml + '</g></svg>';
+
+                                        //element.html(scope.share.backgroundHtml);
+                                        element.html(scope.share.finalShotHtml);
+
+                                        return response.data;
+
+                                    }, function(response) {
+                                        return $q.reject(response);
+                                    });
+                */
+
+                // cargar share template de male or female
                 $http.get(sharePath, {
                         params: {}
                     })
                     .then(function(response1) {
 
-                            /*
-                            dressroomHTML = response1.data.substring(0, response1.data.search('</svg>'));
-
-                            return $http.get(avatarPath, {
-
-                                    params: {}
-                                })
-                                .then(function(response) {
-
-                                    svgGroupString = response.data;
-                                    // cut till <g> tag (group tag included)
-                                    svgGroupString = svgGroupString.substring(svgGroupString.search('<g>') + 3);
-                                    // cut svg closing tag (</svg>)
-                                    svgGroupString = svgGroupString.substring(0, svgGroupString.search('</svg>'));
-
-                                    svgGroupString = '<g transform="translate(960.05, 540.5)">' + svgGroupString;
-                                    console.log(svgGroupString);
-                                    var compiledHTML = $compile(dressroomHTML + svgGroupString + '</svg></div>')(scope);
-                                    element.html(compiledHTML);
-
-                                    return response.data;
-
-                                }, function(response) {
-                                    return $q.reject(response);
-                                });
-                            */
-
                             element.html(response1.data);
                             return response1.data;
-
                         },
                         function(response1) {
                             return $q.reject(response1);
                         });
+
+
+                function triggerDownload(imgURI) {
+                    var evt = new MouseEvent('click', {
+                        view: window,
+                        bubbles: false,
+                        cancelable: true
+                    });
+
+                    var a = document.createElement('a');
+                    //a.setAttribute('download', 'MY_COOL_IMAGE.png');
+                    a.setAttribute('download', 'MY_COOL_IMAGE.jpeg');
+                    a.setAttribute('href', imgURI);
+                    a.setAttribute('target', '_blank');
+
+                    a.dispatchEvent(evt);
+                }
+
+                scope.share.avatarURI = appState.getFinalScreenshotURI();
+                triggerDownload(scope.share.avatarURI);
 
             }
         };
