@@ -31,15 +31,11 @@ angular.module('neighbourhoodAvatarCreatorApp')
                     return Math.floor(Math.random() * (max - min + 1)) + min;
                 }
 
-                question.id = getRandomInt(0,9);
+                question.id = getRandomInt(0, 9);
                 question.display = [false, false, false, false, false, false, false, false, false, false];
                 question.display[question.id] = true;
 
-                question.displayAnswer = [false, false, false, false, false, false, false, false, false, false];
-                question.displayAnswer[question.id] = true;
-
-                // calcular en que sección esta la respuesta
-                question.answer = 1;
+                console.log(question.id);
 
                 question.districts = [
                     'Sant Martí',
@@ -47,23 +43,74 @@ angular.module('neighbourhoodAvatarCreatorApp')
                     'Ciutat Vella',
                     'Sants-Montjuïc',
                     'Les Corts',
-                    'Gracia',
+                    'Gràcia',
                     'Horta-Guinardó',
                     'Sant Andreu',
                     'Eixample',
                     'Nou Barris'
                 ];
 
+                question.districtsAnswersOrder = [
+                    'Eixample',
+                    'Gràcia',
+                    'Les Corts',
+                    'Nou Barris',
+                    'Sant Andreu',
+                    'Ciutat Vella',
+                    'Sant Martí',
+                    'Horta-Guinardó',
+                    'Sants-Montjuïc',
+                    'Sarrià-Sant Gervasi'
+                ];
+
+                console.log(question.districts[question.id]);
+
+                question.answerBlock = null;
+                question.answerPositions = [
+                    ['Eixample', 'Gràcia', 'Les Corts'],
+                    ['Nou Barris', 'Sant Andreu', 'Ciutat Vella', 'Sant Martí'],
+                    ['Horta-Guinardó', 'Sants-Montjuïc', 'Sarrià-Sant Gervasi']
+                ];
+                // calcular en que sección esta la respuesta
+                question.answerPositions.forEach(function(_answerBlock, index) {
+                    if (_answerBlock.indexOf(question.districts[question.id]) !== -1) {
+                        question.answerBlock = index;
+                    }
+                });
+
+                console.log(question.answerBlock);
+
+                question.displayAnswer = [false, false, false, false, false, false, false, false, false, false];
+                question.displayAnswer[question.districtsAnswersOrder.indexOf(question.districts[question.id])] = true;
+
                 // seleccionar la primera respuesta en los otros blokes
+
+                if (0 === question.answerBlock) {
+                    question.displayAnswer[3] = true;
+                    question.displayAnswer[7] = true;
+                } else if (1 === question.answerBlock) {
+                    question.displayAnswer[0] = true;
+                    question.displayAnswer[7] = true;
+                } else if (2 === question.answerBlock) {
+                    question.displayAnswer[0] = true;
+                    question.displayAnswer[3] = true;
+                }
 
 
             },
-            link: function postLink(scope/*, element, attrs*/ ) {
+            link: function postLink(scope /*, element, attrs*/ ) {
 
-                scope.question.answer = function (answerNum){
+                scope.question.answer = function(answerNum) {
 
-                    if (answerNum === scope.question.answer) {
 
+                    console.log('respuesta correcta: ' + scope.question.districts[scope.question.id]);
+                    console.log('respuesta correcta: ' + scope.question.answerBlock);
+                    console.log('respondido: ' + answerNum);
+
+                    if (answerNum === scope.question.id) {
+                        console.log('---> CORRECT !!!');
+                    } else {
+                        console.log('---> FAIL !!!');
                     }
 
                     // guardar en el service la respuesta
@@ -72,8 +119,6 @@ angular.module('neighbourhoodAvatarCreatorApp')
                         realAnswer: scope.question.districts[answerNum]
                     });
 
-
-console.log(appState.getState());
                     // SET AVATAR NAME IN appState !!!!!!!
 
                     // post hacia el server toda la info
