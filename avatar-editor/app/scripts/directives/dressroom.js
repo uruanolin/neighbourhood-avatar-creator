@@ -30,6 +30,7 @@ angular.module('neighbourhoodAvatarCreatorApp')
             controllerAs: 'dressroom',
             controller: function() {
 
+                this.avatarName = '';
                 this.conf = {
 
                     skinColor: null,
@@ -204,6 +205,7 @@ angular.module('neighbourhoodAvatarCreatorApp')
                 scope.dressroom.editionFinished = function() {
 
                     // -> Verification
+                    appState.setName(scope.dressroom.avatarName);
 
                     // -> save avatar conf
                     appState.setAvatarConf(scope.dressroom.conf);
