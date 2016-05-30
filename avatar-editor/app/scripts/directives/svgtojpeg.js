@@ -9,7 +9,7 @@
 angular.module('neighbourhoodAvatarCreatorApp')
     .directive('svgToJpeg', function($http, appState, $q, randomGenerator) {
         return {
-            template: '<svg id="originalSVG" style=""></svg><canvas id="canvas" style=""></canvas>',
+            template: '<svg id="originalSVG" height="626" width="626"></svg><canvas id="canvas" width="626" height="626"></canvas>',
             restrict: 'E',
 
             controllerAs: 'exportsvg',
@@ -57,10 +57,12 @@ angular.module('neighbourhoodAvatarCreatorApp')
 
 
                                     scope.exportsvg.backgroundHtml = response.data;
+                                    // remove svg opening tag
+                                    scope.exportsvg.backgroundHtml = scope.exportsvg.backgroundHtml.substring(scope.exportsvg.backgroundHtml.search('<g>'));
                                     // cut svg closing tag (</svg>)
                                     scope.exportsvg.backgroundHtml = scope.exportsvg.backgroundHtml.substring(0, scope.exportsvg.backgroundHtml.search('</svg>'));
                                     // add transformation
-                                    scope.exportsvg.finalShotHtml = scope.exportsvg.backgroundHtml + '<g transform="translate(310,550) scale(1.2)">' + scope.exportsvg.avatarHtml + '</g>' + scope.exportsvg.watermarkHtml + '</svg>';
+                                    scope.exportsvg.finalShotHtml = scope.exportsvg.backgroundHtml + '<g transform="translate(310,550) scale(1.2)">' + scope.exportsvg.avatarHtml + '</g>' + scope.exportsvg.watermarkHtml;
 
 
                                     $(element.children()[0]).html(scope.exportsvg.finalShotHtml);
@@ -85,6 +87,8 @@ angular.module('neighbourhoodAvatarCreatorApp')
 
                                         a.dispatchEvent(evt);
                                     }
+
+                                    //-----------------------------------------
 
                                     var ctx = canvas.getContext('2d');
                                     var data = (new XMLSerializer()).serializeToString(svg);
