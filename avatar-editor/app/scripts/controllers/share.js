@@ -13,5 +13,6 @@
     angular.module('neighbourhoodAvatarCreatorApp')
         .controller('ShareCtrl', function() {
 
+            this.imgUrl = '';
         });
 })();

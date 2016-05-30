@@ -12,6 +12,10 @@ angular.module('neighbourhoodAvatarCreatorApp')
             template: '<svg id="originalSVG" height="626" width="626"></svg><canvas id="canvas" width="626" height="626"></canvas>',
             restrict: 'E',
 
+            scope: {
+                imgurl: '=imgurl'
+            },
+
             controllerAs: 'exportsvg',
             controller: function() {
 
@@ -88,8 +92,6 @@ angular.module('neighbourhoodAvatarCreatorApp')
                                         a.dispatchEvent(evt);
                                     }
 
-                                    //-----------------------------------------
-
                                     var ctx = canvas.getContext('2d');
                                     var data = (new XMLSerializer()).serializeToString(svg);
                                     var DOMURL = window.URL || window.webkitURL || window;
@@ -107,29 +109,17 @@ angular.module('neighbourhoodAvatarCreatorApp')
                                         //var imgURI = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
                                         var imgURI = canvas.toDataURL('image/jpeg', 1.0).replace('image/jpeg', 'image/octet-stream');
 
-                                        //triggerDownload(imgURI);
                                         appState.setFinalScreenshotURI(imgURI);
+                                        triggerDownload(imgURI);
                                     };
+
                                     img.src = url;
                                     console.log(url);
 
+                                    // pasamos al controller la url de la imagen
+                                    scope.imgurl = url;
+
                                     appState.setFinalScreenshotPath(img.src);
-
-                                    //-------------------------------------------
-
-                                    /*
-                                    $http.get(img.url, {
-
-                                            params: {}
-                                        })
-                                        .then(function(response2) {
-                                            console.log(response2.data);
-                                        },
-                                        function (response2) {
-                                            console.log(response2.data);
-                                            return $q.reject(response2);
-                                        });
-                                        */
 
                                 },
                                 function(response1) {
