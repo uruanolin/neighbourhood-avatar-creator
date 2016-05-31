@@ -7,7 +7,7 @@
  * # svgToJpeg
  */
 angular.module('neighbourhoodAvatarCreatorApp')
-    .directive('svgToJpeg', function($http, appState, $q, randomGenerator) {
+    .directive('svgToJpeg', function($http, appState, $q, randomGenerator, api) {
         return {
             template: '<svg id="originalSVG" height="626" width="626"></svg><canvas id="canvas" width="626" height="626"></canvas>',
             restrict: 'E',
@@ -38,6 +38,7 @@ angular.module('neighbourhoodAvatarCreatorApp')
 
                 var svg = document.getElementById('originalSVG');
                 var canvas = document.getElementById('canvas');
+
 
                 $http.get('images/original-svg-share/FONS-' + scope.exportsvg.randomInt + '.svg', {
 
@@ -107,10 +108,16 @@ angular.module('neighbourhoodAvatarCreatorApp')
                                         DOMURL.revokeObjectURL(url);
 
                                         //var imgURI = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
-                                        var imgURI = canvas.toDataURL('image/jpeg', 1.0).replace('image/jpeg', 'image/octet-stream');
+                                        var imgURI = canvas.toDataURL('image/jpeg', 0.5).replace('image/jpeg', 'image/octet-stream');
+
+                                        //--------------------------------------
 
                                         appState.setFinalScreenshotURI(imgURI);
+
                                         triggerDownload(imgURI);
+
+                                        // post image to the server
+                                        api.postFinalScreenshot(appState.getFinalScreenshotURI());
                                     };
 
                                     img.src = url;
@@ -119,7 +126,9 @@ angular.module('neighbourhoodAvatarCreatorApp')
                                     // pasamos al controller la url de la imagen
                                     scope.imgurl = url;
 
+                                    // set url de la imagen en el service appState (no se usa para nada)
                                     appState.setFinalScreenshotPath(img.src);
+
 
                                 },
                                 function(response1) {

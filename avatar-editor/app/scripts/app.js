@@ -19,7 +19,9 @@ angular
 
         //--------------
         'services.config',
-        'pascalprecht.translate' //,'services.defaultI18n'
+        'pascalprecht.translate', //,'services.defaultI18n'
+        '720kb.socialshare'
+        //'djds4rce.angular-socialshare'
         //--------------
     ])
     .config(function($routeProvider) {
@@ -35,7 +37,7 @@ angular
                 controller: 'EditorCtrl',
                 controllerAs: 'editor',
                 resolve: {
-                    'selectedDistrict': function (appState) {
+                    'selectedDistrict': function(appState) {
                         return appState.getDistrictPromise();
                     }
                 }
@@ -55,7 +57,7 @@ angular
                 controller: 'EditorCtrl',
                 controllerAs: 'editor',
                 resolve: {
-                    'selectedDistrict': function (appState) {
+                    'selectedDistrict': function(appState) {
                         return appState.getDistrictPromise();
                     }
                 }
@@ -65,7 +67,7 @@ angular
                 controller: 'QuestionCtrl',
                 controllerAs: 'question',
                 resolve: {
-                    'selectedAvatarConf': function (appState) {
+                    'selectedAvatarConf': function(appState) {
                         return appState.getAvatarConfPromise();
                     }
                 }
@@ -75,7 +77,7 @@ angular
                 controller: 'ShareCtrl',
                 controllerAs: 'share',
                 resolve: {
-                    'selectedAnswer': function (appState) {
+                    'selectedAnswer': function(appState) {
                         return appState.getAnswerPromise();
                     }
                 }
@@ -101,12 +103,12 @@ angular
         $translateProvider.preferredLanguage('cat');
     }])
 
-    .run(function($rootScope, $location) {
+.run(function($rootScope, $location) {
 
-        $rootScope.$on('$routeChangeError', function(/*event,data*/) {
+    $rootScope.$on('$routeChangeError', function( /*event,data*/ ) {
 
-            console.log('$routeChangeError');
-            //data.$$route.originalPath
-            $location.path('/');
-        });
+        console.log('$routeChangeError');
+        //data.$$route.originalPath
+        $location.path('/');
     });
+});

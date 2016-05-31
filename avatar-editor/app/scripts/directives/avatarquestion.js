@@ -115,8 +115,6 @@ angular.module('neighbourhoodAvatarCreatorApp')
                         realAnswer: scope.question.districts[answerNum]
                     });
 
-                    // SET AVATAR NAME IN appState !!!!!!!
-
                     // post hacia el server toda la info
                     api.postAvatar(appState.getState());
 

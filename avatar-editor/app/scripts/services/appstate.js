@@ -22,7 +22,7 @@
             avatarHtml: null,
             finalScreenshotHtml: null,
             finalScreenshotPath: null,
-            finalScreenShotURI: null
+            finalScreenshotURI: null
         };
 
         function setDistrict(district) {
@@ -103,11 +103,11 @@
         }
 
         function setFinalScreenshotURI(uri) {
-            state.finalScreenShotURI = uri;
+            state.finalScreenshotURI = uri;
         }
 
         function getFinalScreenshotURI(){
-            return state.finalScreenShotURI;
+            return state.finalScreenshotURI;
         }
 
         function getDistrictPromise() {
@@ -128,7 +128,7 @@
         }
 
         function getAnswerPromise() {
-console.log('dsdsdsds');
+
             if (state.answer === null) {
                 return $q.reject();
             }

@@ -3,10 +3,12 @@ var router = express.Router();
 var Avatar = require('../models/avatar.js');
 var jwt = require('jsonwebtoken');
 var config = require('../config');
+var fs = require('fs');
+
+var formidable = require('formidable');
+var FileReader = require('filereader');
 
 router.post('/', function(req, res, next) {
-
-    console.log(req.body);
 
     var newAvatar = Avatar({
 
@@ -24,6 +26,66 @@ router.post('/', function(req, res, next) {
         console.log('Avatar created!');
     });
 
+    res.send('Got a POST request');
+});
+
+router.post('/finalScreenshot', function(req, res, next) {
+
+    console.log('------> POST /finalScreenshot');
+    console.log(req.headers);
+
+    //console.log(req.body);
+
+    console.log(JSON.stringify(req.body));
+
+    var form = new formidable.IncomingForm();
+    //form.uploadDir = 'uploads';
+
+
+        form.parse(req, function(err, fields, files) {
+
+            console.log('---> dentro del callback!!!');
+
+
+
+            console.log(err);
+            console.log(fields);
+            console.log(files);
+
+            //var buf = new Buffer(files.imguri, 'base64'); // decode
+            /*
+            fs.writeFile('TEST.svg', buf, function(err) {
+                if (err) {
+                    console.log('err', err);
+                } else {
+                    return res.json({
+                        'status': 'success'
+                    });
+                }
+            });
+            */
+            /*
+            var writeStream = fs.createWriteStream('svg-test.svg');
+            writeStream.write('hola');
+            writeStream.end();
+            */
+        });
+
+    /*
+        console.log('------> topotamadre');
+        console.log(req.headers);
+        console.log(req.body);
+        console.log(req.params);
+
+        var writeStream = fs.createWriteStream('/home/u/testttttttttt.txt');
+        writeStream.write('Hi, JournalDEV Usres. ');
+        writeStream.write('Thank You.');
+        writeStream.end();
+    */
+
+
+
+    console.log('handler finshed');
     res.send('Got a POST request');
 });
 

@@ -24,7 +24,7 @@ mongoose.connect(config.databaseURL);
 // JsonWebTokens Authentication
 
 // get packages
-var bodyParser = require('body-parser');
+//var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var jwt = require('jsonwebtoken');
 var User = require('./models/user');
@@ -46,6 +46,7 @@ app.use(bodyParser.json());
 
 // use morgan to log requests to the console
 app.use(morgan('dev'));
+
 
 
 //--------------------------------------------
@@ -105,5 +106,21 @@ app.use(function(err, req, res, next) {
 });
 
 
+
+
+/*
+app.use(function(req, res, next) {
+    if (req.is('text/*')) {
+        req.text = '';
+        req.setEncoding('utf8');
+        req.on('data', function(chunk) {
+            req.text += chunk;
+        });
+        req.on('end', next);
+    } else {
+        next();
+    }
+});
+*/
 
 module.exports = app;

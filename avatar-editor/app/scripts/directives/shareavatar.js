@@ -61,6 +61,13 @@ angular.module('neighbourhoodAvatarCreatorApp')
                 });
 
 
+                scope.shareavatar.shareTwitter = function () {
+                    document.getElementById('shareTwitterLink').click();
+                }
+
+                scope.shareavatar.shareFacebook = function () {
+                    document.getElementById('shareFacebookLink').click();
+                }
 
 
 
