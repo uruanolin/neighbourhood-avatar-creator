@@ -38,7 +38,7 @@ angular.module('neighbourhoodAvatarCreatorApp')
 
                 var svg = document.getElementById('originalSVG');
                 var canvas = document.getElementById('canvas');
-
+console.log(scope.exportsvg.avatarHtml);
 
                 $http.get('images/original-svg-share/FONS-' + scope.exportsvg.randomInt + '.svg', {
 
@@ -85,7 +85,6 @@ angular.module('neighbourhoodAvatarCreatorApp')
                                         });
 
                                         var a = document.createElement('a');
-                                        //a.setAttribute('download', 'MY_COOL_IMAGE.png');
                                         a.setAttribute('download', 'MY_COOL_IMAGE.jpeg');
                                         a.setAttribute('href', imgURI);
                                         a.setAttribute('target', '_blank');

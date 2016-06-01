@@ -31,31 +31,16 @@ router.post('/', function(req, res, next) {
 
 router.post('/finalScreenshot', function(req, res, next) {
 
-    console.log('------> POST /finalScreenshot');
     console.log(req.headers);
-
     console.log(req.body);
 
 
-
-    /*
-    var writeStream = fs.createWriteStream('svg-test.svg');
-    writeStream.write(buffer);
-    writeStream.end();
-    */
     var string = req.body.data.replace('data:image/octet-stream;base64,', '');
-
-var buffer = new Buffer(string, 'base64')
-console.log(buffer);
-
-//buffer = 'data:text/plain;charset=utf-8;base64,ZHdkd2R3';
-//buffer = 'ZHdkd2R3';
-//buffer = new Buffer('ZHdkd2R3', 'base64')
-
+    var buffer = new Buffer(string, 'base64')
     fs.writeFileSync('svg-test.jpg', buffer);
 
+    // return file's server path 
 
-    console.log('handler finshed');
     res.send('Got a POST request');
 });
 

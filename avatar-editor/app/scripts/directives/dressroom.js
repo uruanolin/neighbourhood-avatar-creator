@@ -58,7 +58,9 @@ angular.module('neighbourhoodAvatarCreatorApp')
                     moustacheOrLips: [false, false, false, false, false, false, false],
                     topClothe: [false, false, false, false, false, false, false, false, false, false],
                     bottomClothe: [false, false, false, false, false, false, false, false],
-                    shoes: [false, false, false, false, false, false, false, false, false, false]
+                    shoes: [false, false, false, false, false, false, false, false, false, false],
+                    topLeaf: true,
+                    bottomLeaf: true
                 };
 
                 this.skinColorPalette = [
@@ -92,11 +94,11 @@ angular.module('neighbourhoodAvatarCreatorApp')
 
 
                 if (appState.getGender() === 'male') {
-                    avatarPath = 'images/svg/avatar-male-vestuari.svg';
+                    avatarPath = 'images/svg/avatar-male-vestuari-2.svg';
                     dressroomPath = 'views/dressroomman.html';
 
                 } else if (appState.getGender() === 'female') {
-                    avatarPath = 'images/svg/avatar-female-vestuari.svg';
+                    avatarPath = 'images/svg/avatar-female-vestuari-2.svg';
                     dressroomPath = 'views/dressroomwoman.html';
                 }
 
@@ -178,8 +180,9 @@ angular.module('neighbourhoodAvatarCreatorApp')
                     var optionNum = elementId.substring(elementId.lastIndexOf('_') + 1);
 
                     if (optionNum === 'NOTHING') {
-                        scope.dressroom.displayElement[attributeName].forEach(function(boolDisplay) {
-                            boolDisplay = false;
+
+                        scope.dressroom.displayElement[attributeName].forEach(function(boolDisplay, index) {
+                            scope.dressroom.displayElement[attributeName][index] = false;
                         });
 
                     } else {
@@ -190,6 +193,11 @@ angular.module('neighbourhoodAvatarCreatorApp')
 
 
                         }else{
+
+                            if (attributeName === 'bottomClothe') {
+                                scope.dressroom.displayElement.bottomLeaf = false;
+                            }
+
                             scope.dressroom.displayElement[attributeName].forEach(function(boolDisplay, index) {
 
                                 if (index === parseInt(optionNum - 1)) {
