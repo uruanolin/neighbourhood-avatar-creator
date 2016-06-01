@@ -2,7 +2,7 @@
 
 angular.module('services.config', [])
     .constant('configuration', {
-        inProduction: false,
+        inProduction: true,
         //UrlBase: '@@UrlBase',
         //ApiUrlBase: '@@ApiUrlBase',
         //ApiUrlBaseOLD: '@@ApiUrlBaseOLD',

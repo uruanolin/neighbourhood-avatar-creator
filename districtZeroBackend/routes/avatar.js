@@ -31,17 +31,19 @@ router.post('/', function(req, res, next) {
 
 router.post('/finalScreenshot', function(req, res, next) {
 
-    console.log(req.headers);
-    console.log(req.body);
+    //console.log(req.headers);
+    //console.log(req.body);
 
+    var d = new Date();
+    var n = d.getTime();
 
     var string = req.body.data.replace('data:image/octet-stream;base64,', '');
     var buffer = new Buffer(string, 'base64')
-    fs.writeFileSync('svg-test.jpg', buffer);
+    fs.writeFileSync('/usr/share/nginx/html/static/' + n + '.jpg', buffer);
 
-    // return file's server path 
-
-    res.send('Got a POST request');
+    // return file's server path
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify({ imagename: n }));
 });
 
 // route middleware to verify a token

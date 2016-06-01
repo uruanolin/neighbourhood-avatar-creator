@@ -82,12 +82,24 @@ module.exports = function(grunt) {
 
             // Added for grunt-connect-proxy
             proxies: [{
+
+                /*
                 context: '/backenddev',
                 host: 'localhost',
                 port: 3000,
                 rewrite: {
                     '^/backenddev': ''
                 }
+
+                */
+
+                context: '/backenddev',
+                host: '212.24.106.168',
+                port: 80,
+                rewrite: {
+                    '^/backenddev': ''
+                }
+
             }],
             /*
                         // Added for grunt-connect-proxy
@@ -388,7 +400,8 @@ module.exports = function(grunt) {
                 ],
                 patterns: {
                     js: [
-                        [/(images\/[^''""]*\.(png|jpg|jpeg|gif|webp|svg))/g, 'Replacing references to images']
+                        [/(images\/[^''""]*\.(png|jpg|jpeg|gif|webp|svg))/g, 'Replacing references to images'],
+                        [/(views\/.*\.html)/g, 'Replacing references to views']
                     ]
                 }
             }
@@ -634,6 +647,9 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
+
+'replace:production',
+
         'wiredep',
         'useminPrepare',
         'concurrent:dist',

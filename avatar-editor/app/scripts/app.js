@@ -33,6 +33,7 @@ angular
                 controllerAs: 'main'
                 */
 
+                /*
                 templateUrl: 'views/editor.html',
                 controller: 'EditorCtrl',
                 controllerAs: 'editor',
@@ -41,6 +42,10 @@ angular
                         return appState.getDistrictPromise();
                     }
                 }
+                */
+                templateUrl: 'views/landing.html',
+                controller: 'LandingCtrl',
+                controllerAs: 'landing'
             })
             .when('/about', {
                 templateUrl: 'views/about.html',
@@ -91,13 +96,25 @@ angular
         $translateProvider.translations('es', {
             'QUESTION_P1': '¿ME AYUDAS?',
             'QUESTION_P2': '¿DE QUÉ',
-            'QUESTION_P3': 'DISTRITO SOY?'
+            'QUESTION_P3': 'DISTRITO SOY?',
+            'LANDING_B1': 'Bienvenido a Distrito Zero!',
+            'LANDING_B2': 'Descubre Barcelona paseándo',
+            'LANDING_B3': 'por nuestra ciudad ...',
+            'LANDING_B4': 'Y haz',
+            'LANDING_B5': 'en',
+            'LANDING_B6': 'tu distrito.'
         });
 
         $translateProvider.translations('cat', {
             'QUESTION_P1': 'M’AJUDES ?',
             'QUESTION_P2': 'DE QUIN',
-            'QUESTION_P3': 'DISTRICTE SÓC?'
+            'QUESTION_P3': 'DISTRICTE SÓC?',
+            'LANDING_B1': 'Benvingut a Districte Zero!',
+            'LANDING_B2': 'Descobreix Barcelona passejant',
+            'LANDING_B3': 'per la nostra ciutat...',
+            'LANDING_B4': 'I fes',
+            'LANDING_B5': 'al',
+            'LANDING_B6': 'teu districte.'
         });
 
         $translateProvider.preferredLanguage('cat');

@@ -10,7 +10,7 @@ angular.module('neighbourhoodAvatarCreatorApp')
     .directive('dressRoom', function(appState, $http, $q, $compile, $location) {
         return {
             //templateUrl: 'views/dressroom.html',
-
+            /*
             templateUrl: function() {
                 var result;
                 if (appState.getGender() === 'male') {
@@ -20,7 +20,7 @@ angular.module('neighbourhoodAvatarCreatorApp')
                 }
                 return result;
             },
-
+            */
             restrict: 'E',
             /*
             scope: {
@@ -77,8 +77,6 @@ angular.module('neighbourhoodAvatarCreatorApp')
             },
             link: function postLink(scope, element /*, attrs*/ ) {
 
-
-                appState.initAvatarConf();
 
                 // Print avatar
 

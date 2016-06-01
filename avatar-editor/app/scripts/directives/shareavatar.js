@@ -26,7 +26,8 @@ angular.module('neighbourhoodAvatarCreatorApp')
             },
 
             link: function postLink(scope, element /*, attrs*/ ) {
-                scope.shareavatar.imgurl = 'http://i2.cdnds.net/13/48/300x225/ustv-family-guy-brian.jpg';
+                scope.shareavatar.imgurl = '';
+
                 var sharePath = null,
                     randomInt = randomGenerator.getRandomInt(1, 12);
 
@@ -62,10 +63,12 @@ angular.module('neighbourhoodAvatarCreatorApp')
 
 
                 scope.shareavatar.shareTwitter = function () {
+                    scope.shareavatar.imgurl = 'http://212.24.106.168/static/' + appState.getImageName() + '.jpg';
                     document.getElementById('shareTwitterLink').click();
                 }
 
                 scope.shareavatar.shareFacebook = function () {
+                    scope.shareavatar.imgurl = 'http://212.24.106.168/static/' + appState.getImageName() + '.jpg';
                     document.getElementById('shareFacebookLink').click();
                 }
 

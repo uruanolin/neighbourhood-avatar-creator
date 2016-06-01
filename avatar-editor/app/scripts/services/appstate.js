@@ -22,7 +22,8 @@
             avatarHtml: null,
             finalScreenshotHtml: null,
             finalScreenshotPath: null,
-            finalScreenshotURI: null
+            finalScreenshotURI: null,
+            imageName: null
         };
 
         function setDistrict(district) {
@@ -111,8 +112,7 @@
         }
 
         function getDistrictPromise() {
-//CHANGE !!!!!!!!!!
-            return 'algoo';
+
             if (state.district === null) {
                 return $q.reject();
             }
@@ -133,6 +133,27 @@
                 return $q.reject();
             }
             return state.answer;
+        }
+
+        function initAvatarConf() {
+            state.avatarConf = {
+
+                skinColor: null,
+                hair: null,
+                glasses: null,
+                moustacheOrLips: null,
+                selectTopClothe: null,
+                selectBottomClothe: null,
+                shoes: null
+            };
+        }
+
+        function setImageName (name) {
+            state.imageName = name;
+        }
+
+        function getImageName () {
+            return state.imageName;
         }
 
         return {
@@ -159,7 +180,10 @@
             setFinalScreenshotPath: setFinalScreenshotPath,
             getFinalScreenshotPath: getFinalScreenshotPath,
             setFinalScreenshotURI: setFinalScreenshotURI,
-            getFinalScreenshotURI: getFinalScreenshotURI
+            getFinalScreenshotURI: getFinalScreenshotURI,
+            initAvatarConf: initAvatarConf,
+            setImageName: setImageName,
+            getImageName: getImageName
         };
     }
 

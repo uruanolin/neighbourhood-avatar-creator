@@ -10,7 +10,7 @@
 
 (function() {
 
-    function api($q, $http, configuration) {
+    function api($q, $http, configuration, appState) {
 
         function postAvatar(data) {
 
@@ -44,7 +44,8 @@
 */
             }).then(function(response) {
                 console.log('POST image OK');
-                //$log.debug(response);
+
+                appState.setImageName(response.data.imagename);
                 return response.data;
 
             }, function(response) {
