@@ -34,55 +34,25 @@ router.post('/finalScreenshot', function(req, res, next) {
     console.log('------> POST /finalScreenshot');
     console.log(req.headers);
 
-    //console.log(req.body);
-
-    console.log(JSON.stringify(req.body));
-
-    var form = new formidable.IncomingForm();
-    //form.uploadDir = 'uploads';
+    console.log(req.body);
 
 
-        form.parse(req, function(err, fields, files) {
-
-            console.log('---> dentro del callback!!!');
-
-
-
-            console.log(err);
-            console.log(fields);
-            console.log(files);
-
-            //var buf = new Buffer(files.imguri, 'base64'); // decode
-            /*
-            fs.writeFile('TEST.svg', buf, function(err) {
-                if (err) {
-                    console.log('err', err);
-                } else {
-                    return res.json({
-                        'status': 'success'
-                    });
-                }
-            });
-            */
-            /*
-            var writeStream = fs.createWriteStream('svg-test.svg');
-            writeStream.write('hola');
-            writeStream.end();
-            */
-        });
 
     /*
-        console.log('------> topotamadre');
-        console.log(req.headers);
-        console.log(req.body);
-        console.log(req.params);
-
-        var writeStream = fs.createWriteStream('/home/u/testttttttttt.txt');
-        writeStream.write('Hi, JournalDEV Usres. ');
-        writeStream.write('Thank You.');
-        writeStream.end();
+    var writeStream = fs.createWriteStream('svg-test.svg');
+    writeStream.write(buffer);
+    writeStream.end();
     */
+    var string = req.body.data.replace('data:image/octet-stream;base64,', '');
 
+var buffer = new Buffer(string, 'base64')
+console.log(buffer);
+
+//buffer = 'data:text/plain;charset=utf-8;base64,ZHdkd2R3';
+//buffer = 'ZHdkd2R3';
+//buffer = new Buffer('ZHdkd2R3', 'base64')
+
+    fs.writeFileSync('svg-test.jpg', buffer);
 
 
     console.log('handler finshed');
