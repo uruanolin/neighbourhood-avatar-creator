@@ -85,10 +85,10 @@ console.log(scope.exportsvg.avatarHtml);
                                         });
 
                                         var a = document.createElement('a');
-                                        a.setAttribute('download', 'MY_COOL_IMAGE.jpeg');
+                                        a.setAttribute('download', 'my_districteZero_avatar.jpeg');
                                         a.setAttribute('href', imgURI);
                                         a.setAttribute('target', '_blank');
-
+console.log('kakota');
                                         a.dispatchEvent(evt);
                                     }
 
@@ -110,7 +110,7 @@ console.log(scope.exportsvg.avatarHtml);
                                         var imgURI = canvas.toDataURL('image/jpeg', 0.5).replace('image/jpeg', 'image/octet-stream');
 
                                         //--------------------------------------
-
+console.log('puuuuuta');
                                         appState.setFinalScreenshotURI(imgURI);
 
                                         triggerDownload(imgURI);
@@ -124,6 +124,7 @@ console.log(scope.exportsvg.avatarHtml);
 
                                     // pasamos al controller la url de la imagen
                                     scope.imgurl = url;
+                                    //scope.imgurl = 'http://212.24.106.168/static/' + appState.getImageName() + '.jpg';
 
                                     // set url de la imagen en el service appState (no se usa para nada)
                                     appState.setFinalScreenshotPath(img.src);

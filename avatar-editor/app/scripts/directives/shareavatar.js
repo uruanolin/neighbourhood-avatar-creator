@@ -7,7 +7,7 @@
  * # shareAvatar
  */
 angular.module('neighbourhoodAvatarCreatorApp')
-    .directive('shareAvatar', function($http, appState, $q, randomGenerator, $compile) {
+    .directive('shareAvatar', function($http, appState, $q, randomGenerator, $compile, templates, $window) {
         return {
 
             restrict: 'E',
@@ -28,7 +28,7 @@ angular.module('neighbourhoodAvatarCreatorApp')
             link: function postLink(scope, element /*, attrs*/ ) {
                 scope.shareavatar.imgurl = '';
 
-                var sharePath = null,
+                var shareHTML = null,
                     randomInt = randomGenerator.getRandomInt(1, 12);
 
                 if (randomInt < 10) {
@@ -38,27 +38,15 @@ angular.module('neighbourhoodAvatarCreatorApp')
                 }
 
                 if (appState.getGender() === 'male') {
-                    sharePath = 'views/sharemaleavatar.html';
+                    shareHTML = templates.getShareMale();
                 } else if (appState.getGender() === 'female') {
-                    sharePath = 'views/sharefemaleavatar.html';
+                    shareHTML = templates.getShareFemale();
                 }
 
                 scope.$watch('imgurl', function() {
 
-                    // cargar share template de male or female
-                    $http.get(sharePath, {
-                            params: {}
-                        })
-                        .then(function(response1) {
-
-                                var compiledHtml = $compile(response1.data)(scope);
-                                element.html(compiledHtml);
-                                //element.html(response1.data);
-                                return response1.data;
-                            },
-                            function(response1) {
-                                return $q.reject(response1);
-                            });
+                    var compiledHtml = $compile(shareHTML)(scope);
+                    element.html(compiledHtml);
                 });
 
 
@@ -72,7 +60,9 @@ angular.module('neighbourhoodAvatarCreatorApp')
                     document.getElementById('shareFacebookLink').click();
                 }
 
-
+                scope.shareavatar.go = function () {
+                    $window.open('http://www.districtezero.com', '_blank')
+                };
 
             }
         };
