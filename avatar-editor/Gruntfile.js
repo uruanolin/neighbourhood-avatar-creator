@@ -433,6 +433,9 @@ module.exports = function(grunt) {
         //   dist: {}
         // },
 
+
+
+
         imagemin: {
             dist: {
                 files: [{
@@ -648,7 +651,7 @@ module.exports = function(grunt) {
     grunt.registerTask('build', [
         'clean:dist',
 
-'replace:production',
+        'replace:production',
 
         'wiredep',
         'useminPrepare',

@@ -6,7 +6,7 @@
  * @description
  * # avatarSexSelector
  */
- 
+
 angular.module('neighbourhoodAvatarCreatorApp')
     .directive('avatarSexSelector', function(appState) {
         return {

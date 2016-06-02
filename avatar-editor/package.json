@@ -43,6 +43,7 @@
     "test": "karma start test/karma.conf.js"
   },
   "dependencies": {
+    "grunt-contrib-uglify": "^1.0.1",
     "grunt-replace": "^1.0.1"
   }
 }
