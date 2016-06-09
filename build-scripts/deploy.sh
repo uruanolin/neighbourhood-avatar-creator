@@ -1,13 +1,14 @@
-#!/bin/bash
-# $1 = deploy file
-# $2 = deploy directory (REALTIVE path from /var/www/html)
-
-
-#cd $HOME"/usr/share/nginx/html"
-cd $HOME
 
 # hacer una copia de la ultima version antes de borrar
+cd $HOME/old-frontend
+sudo cp -rf /usr/share/nginx/html/* .
+sudo rm -rf /usr/share/nginx/html/*
 
+# extract new frontend version
 rm -rf $HOME/frontend-deploy/*
+cd $HOME/frontend-deploy
+tar -xvf ../frontendDistricteZero-deploy.tar
 
-tar -xvf frontendDistricteZero-deploy.tar -C .
+# cp in nginx
+cd /usr/share/nginx/html
+sudo cp -rf /home/u/frontend-deploy/* .
