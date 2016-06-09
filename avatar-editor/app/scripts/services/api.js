@@ -45,7 +45,7 @@
             }).then(function(response) {
                 console.log('POST image OK');
 
-                appState.setImageName(response.data.imagename);
+                //appState.setImageName(response.data.imagename);
                 return response.data;
 
             }, function(response) {

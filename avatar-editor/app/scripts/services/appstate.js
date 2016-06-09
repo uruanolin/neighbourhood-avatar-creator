@@ -21,7 +21,6 @@
             answer: null,
             avatarHtml: null,
             finalScreenshotHtml: null,
-            finalScreenshotPath: null,
             finalScreenshotURI: null,
             imageName: null
         };
@@ -95,13 +94,7 @@
             return state.finalScreenshotHtml;
         }
 
-        function setFinalScreenshotPath(path) {
-            state.finalScreenshotPath = path;
-        }
 
-        function getFinalScreenshotPath() {
-            return state.finalScreenshotPath;
-        }
 
         function setFinalScreenshotURI(uri) {
             state.finalScreenshotURI = uri;
@@ -177,8 +170,6 @@
             getAvatarHtml: getAvatarHtml,
             setFinalScreenshotHtml: setFinalScreenshotHtml,
             getFinalScreenshotHtml: getFinalScreenshotHtml,
-            setFinalScreenshotPath: setFinalScreenshotPath,
-            getFinalScreenshotPath: getFinalScreenshotPath,
             setFinalScreenshotURI: setFinalScreenshotURI,
             getFinalScreenshotURI: getFinalScreenshotURI,
             initAvatarConf: initAvatarConf,

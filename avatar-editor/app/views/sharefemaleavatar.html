@@ -2,7 +2,20 @@
 
 <div style="width: 100%; height: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center;">
 
-    <a id="shareTwitterLink" href="" socialshare socialshare-provider="twitter" socialshare-text="720kb AngularJS Socialshare" socialshare-hashtags="angularjs, angular-socialshare" socialshare-url="http://720kb.net"></a>
+    <a id="shareTwitterLink"
+    href=""
+    socialshare
+    socialshare-provider="twitter"
+    socialshare-text="This is my DistricteZero avatar!"
+    socialshare-hashtags="districteZero"
+    socialshare-url="{{shareavatar.imgurl}}"></a>
+
+    <a id="shareFacebookLink"
+    href=""
+    socialshare
+    socialshare-provider="facebook"
+    socialshare-url="{{shareavatar.imgurl}}">
+    </a>
 
     <svg style="height: 99%; width: auto;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 1920.1 1081" enable-background="new 0 0 1920.1 1081" xml:space="preserve">
         <g id="FONS">
@@ -111,14 +124,14 @@
                 <rect x="1360.9" y="348.7" fill="none" width="486.9" height="258"/>
                 <text transform="matrix(1 0 0 1 1360.8804 392.0672)">
                     <tspan x="0" y="0" fill="#575756" font-family="'FuturaStd-Medium'" font-size="50">MÁS INFORMACIÓN</tspan>
-                    <tspan x="0" y="208.8" fill="#575756" font-family="'FuturaStd-Bold'" font-size="41">DISTRICTEZERO.COM</tspan>
+                    <tspan x="0" y="208.8" fill="#575756" font-family="'FuturaStd-Bold'" font-size="41" class="clickable" ng-click="shareavatar.go()">DISTRICTEZERO.COM</tspan>
                 </text>
 
                 <line fill="none" stroke="#878787" stroke-width="11" stroke-linecap="round" stroke-miterlimit="10" x1="1365.9" y1="420" x2="1507.9" y2="420"/>
             </g>
         </g>
 
-        <image xlink:href="" ng-href="{{imgurl}}" x="600" y="200" height="400" width="400"/>
+        <image xlink:href="" ng-href="{{shareavatar.imgurl}}" x="600" y="200" height="400" width="400"/>
 
     </svg>
 

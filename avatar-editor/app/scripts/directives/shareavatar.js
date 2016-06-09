@@ -28,37 +28,33 @@ angular.module('neighbourhoodAvatarCreatorApp')
             },
 
             controllerAs: 'shareavatar',
-            controller: function() {
-
-                var shareavatar = this;
-
+            controller: function($scope) {
+                this.imgurl = $scope.imgurl;
             },
 
-            link: function postLink(scope, element /*, attrs*/ ) {
-                scope.shareavatar.imgurl = '';
+            link: function postLink(scope/*, element, attrs*/ ) {
 
-                var randomInt = randomGenerator.getRandomInt(1, 12);
-
-                if (randomInt < 10) {
-                    randomInt = '0' + randomInt;
-                } else {
-                    randomInt = parseInt(randomInt);
-                }
-
+                /*
                 scope.$watch('imgurl', function() {
+
+                    scope.shareavatar.imgurl = scope.imgurl;
+                    scope.shareavatar.kk = '  asasasasa';
+
+                    console.log(scope.imgurl);
+                    console.log(scope.shareavatar);
 
                     var compiledHtml = $compile(element.html())(scope);
                     element.html(compiledHtml);
                 });
-
+                */
 
                 scope.shareavatar.shareTwitter = function () {
-                    scope.shareavatar.imgurl = 'http://212.24.106.168/static/' + appState.getImageName() + '.jpg';
+                    //scope.shareavatar.imgurl = 'http://212.24.106.168/static/' + appState.getImageName() + '.jpg';
                     document.getElementById('shareTwitterLink').click();
                 };
 
                 scope.shareavatar.shareFacebook = function () {
-                    scope.shareavatar.imgurl = 'http://212.24.106.168/static/' + appState.getImageName() + '.jpg';
+                    //scope.shareavatar.imgurl = 'http://212.24.106.168/static/' + appState.getImageName() + '.jpg';
                     document.getElementById('shareFacebookLink').click();
                 };
 

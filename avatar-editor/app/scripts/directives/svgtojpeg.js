@@ -38,7 +38,7 @@ angular.module('neighbourhoodAvatarCreatorApp')
 
                 var svg = document.getElementById('originalSVG');
                 var canvas = document.getElementById('canvas');
-console.log(scope.exportsvg.avatarHtml);
+                console.log(scope.exportsvg.avatarHtml);
 
                 $http.get('images/original-svg-share/FONS-' + scope.exportsvg.randomInt + '.svg', {
 
@@ -88,7 +88,7 @@ console.log(scope.exportsvg.avatarHtml);
                                         a.setAttribute('download', 'my_districteZero_avatar.jpeg');
                                         a.setAttribute('href', imgURI);
                                         a.setAttribute('target', '_blank');
-console.log('kakota');
+                                        console.log('kakota');
                                         a.dispatchEvent(evt);
                                     }
 
@@ -110,25 +110,26 @@ console.log('kakota');
                                         var imgURI = canvas.toDataURL('image/jpeg', 0.5).replace('image/jpeg', 'image/octet-stream');
 
                                         //--------------------------------------
-console.log('puuuuuta');
-                                        appState.setFinalScreenshotURI(imgURI);
-
                                         triggerDownload(imgURI);
 
                                         // post image to the server
-                                        api.postFinalScreenshot(appState.getFinalScreenshotURI());
+                                        appState.setFinalScreenshotURI(imgURI);
+                                        api.postFinalScreenshot(appState.getFinalScreenshotURI())
+                                            .then(function(response) {
+
+                                            console.log('POST image OK');
+                                            appState.setImageName(response.imagename);
+
+                                            // pasamos al controller la url de la imagen
+                                            scope.imgurl = 'http://212.24.106.168/static/' + response.imagename + '.jpg';
+
+                                        }, function(response) {
+                                            console.log('POST image FAIL');
+                                            return $q.reject(response);
+                                        });
                                     };
 
                                     img.src = url;
-                                    console.log(url);
-
-                                    // pasamos al controller la url de la imagen
-                                    scope.imgurl = url;
-                                    //scope.imgurl = 'http://212.24.106.168/static/' + appState.getImageName() + '.jpg';
-
-                                    // set url de la imagen en el service appState (no se usa para nada)
-                                    appState.setFinalScreenshotPath(img.src);
-
 
                                 },
                                 function(response1) {
