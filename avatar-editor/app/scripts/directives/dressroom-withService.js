@@ -7,9 +7,10 @@
  * # dressRoom
  */
 angular.module('neighbourhoodAvatarCreatorApp')
-    .directive('dressRoom', function(appState, $http, $q, $compile, $location) {
+    .directive('dressRoom', function(appState, $http, $q, $compile, $location, templates) {
         return {
-            //templateUrl: 'views/dressroomman.html',
+            //templateUrl: 'views/dressroom.html',
+/*
             templateUrl: function() {
                 var result;
                 if (appState.getGender() === 'male') {
@@ -19,6 +20,7 @@ angular.module('neighbourhoodAvatarCreatorApp')
                 }
                 return result;
             },
+*/
             restrict: 'E',
             /*
             scope: {
@@ -78,10 +80,51 @@ angular.module('neighbourhoodAvatarCreatorApp')
 
                 appState.initAvatarConf();
 
-/*
-                var compiledHtml = $compile(element.html())(scope);
-                element.html(compiledHtml);
-*/
+                // Print avatar
+
+                // -> home
+                // -> fulles IF NO pants
+
+                // -> dona
+                // -> abaix fulles IF NO pants
+                // -> a dalt fulles IF NO shirt
+
+                var avatarPath = null,
+                    dressroomPath = null,
+                    svgGroupString = null,
+                    dressroomHTML = null;
+
+
+                if (appState.getGender() === 'male') {
+                    svgGroupString = templates.getVestuariMale();
+                    dressroomHTML = templates.getDressroomMale();
+
+                } else if (appState.getGender() === 'female') {
+                    svgGroupString = templates.getVestuariFemale();
+                    dressroomHTML = templates.getDressroomFemale();
+                }
+
+
+
+
+
+                dressroomHTML = dressroomHTML.substring(0, dressroomHTML.search('</svg>'));
+
+
+                // cut till <g> tag (group tag included)
+                svgGroupString = svgGroupString.substring(svgGroupString.search('<g>') + 3);
+                // cut svg closing tag (</svg>)
+                svgGroupString = svgGroupString.substring(0, svgGroupString.search('</svg>'));
+
+                svgGroupString = '<g transform="translate(960.05, 540.5)">' + svgGroupString;
+                //console.log(svgGroupString);
+                var compiledHTML = $compile(dressroomHTML + svgGroupString + '</svg></div>')(scope);
+                element.html(compiledHTML);
+
+
+
+
+
 
                 scope.dressroom.openMenu = function(option) {
                     scope.dressroom.showBaf[option] = true;

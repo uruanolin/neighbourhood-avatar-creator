@@ -2,10 +2,10 @@
 
 angular.module('services.config', [])
     .constant('configuration', {
-        inProduction: true,
+        inProduction: false,
         //UrlBase: '@@UrlBase',
         //ApiUrlBase: '@@ApiUrlBase',
         //ApiUrlBaseOLD: '@@ApiUrlBaseOLD',
         //supportEmail: '@@supportEmail'
-        apiPath: '/api'
+        apiPath: '/backenddev/api'
     });

@@ -129,3 +129,26 @@ angular
         $location.path('/');
     });
 });
+
+/*
+
+.run(function($http, $templateCache, $q) {
+
+    var templates = ['dressroomman.html', 'dressroomwoman.html', 'sharemaleavatar.html', 'sharefemaleavatar.html'];
+
+    templates.forEach(function(templateName){
+
+        $http.get('views/' + templateName, {})
+            .then(function(response) {
+
+                $templateCache.put(templateName,
+                    response.data
+                );
+                return response.data;
+
+            }, function(response) {
+                return $q.reject(response);
+            });
+    });
+});
+*/

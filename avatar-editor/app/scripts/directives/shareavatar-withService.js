@@ -17,15 +17,6 @@ angular.module('neighbourhoodAvatarCreatorApp')
                 imgurl: '=imgurl'
             },
 
-            templateUrl: function() {
-                var result;
-                if (appState.getGender() === 'male') {
-                    result = 'views/sharemaleavatar.html';
-                } else if (appState.getGender() === 'female') {
-                    result = 'views/sharefemaleavatar.html';
-                }
-                return result;
-            },
 
             controllerAs: 'shareavatar',
             controller: function() {
@@ -37,7 +28,8 @@ angular.module('neighbourhoodAvatarCreatorApp')
             link: function postLink(scope, element /*, attrs*/ ) {
                 scope.shareavatar.imgurl = '';
 
-                var randomInt = randomGenerator.getRandomInt(1, 12);
+                var shareHTML = null,
+                    randomInt = randomGenerator.getRandomInt(1, 12);
 
                 if (randomInt < 10) {
                     randomInt = '0' + randomInt;
@@ -45,9 +37,15 @@ angular.module('neighbourhoodAvatarCreatorApp')
                     randomInt = parseInt(randomInt);
                 }
 
+                if (appState.getGender() === 'male') {
+                    shareHTML = templates.getShareMale();
+                } else if (appState.getGender() === 'female') {
+                    shareHTML = templates.getShareFemale();
+                }
+
                 scope.$watch('imgurl', function() {
 
-                    var compiledHtml = $compile(element.html())(scope);
+                    var compiledHtml = $compile(shareHTML)(scope);
                     element.html(compiledHtml);
                 });
 
@@ -55,15 +53,15 @@ angular.module('neighbourhoodAvatarCreatorApp')
                 scope.shareavatar.shareTwitter = function () {
                     scope.shareavatar.imgurl = 'http://212.24.106.168/static/' + appState.getImageName() + '.jpg';
                     document.getElementById('shareTwitterLink').click();
-                };
+                }
 
                 scope.shareavatar.shareFacebook = function () {
                     scope.shareavatar.imgurl = 'http://212.24.106.168/static/' + appState.getImageName() + '.jpg';
                     document.getElementById('shareFacebookLink').click();
-                };
+                }
 
                 scope.shareavatar.go = function () {
-                    $window.open('http://www.districtezero.com', '_blank');
+                    $window.open('http://www.districtezero.com', '_blank')
                 };
 
             }

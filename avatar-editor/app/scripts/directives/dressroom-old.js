@@ -9,8 +9,8 @@
 angular.module('neighbourhoodAvatarCreatorApp')
     .directive('dressRoom', function(appState, $http, $q, $compile, $location) {
         return {
-            //templateUrl: 'views/dressroom.html',
-/*
+            //templateUrl: 'views/dressroomman.html',
+            /*
             templateUrl: function() {
                 var result;
                 if (appState.getGender() === 'male') {
@@ -20,7 +20,7 @@ angular.module('neighbourhoodAvatarCreatorApp')
                 }
                 return result;
             },
-*/
+            */
             restrict: 'E',
             /*
             scope: {
@@ -93,7 +93,6 @@ angular.module('neighbourhoodAvatarCreatorApp')
                     dressroomPath = null,
                     svgGroupString = null,
                     dressroomHTML = null;
-
 
                 if (appState.getGender() === 'male') {
                     avatarPath = 'images/svg/avatar-male-vestuari-2.svg';
