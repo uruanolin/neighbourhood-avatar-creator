@@ -7,5 +7,6 @@ angular.module('services.config', [])
         //ApiUrlBase: '@@ApiUrlBase',
         //ApiUrlBaseOLD: '@@ApiUrlBaseOLD',
         //supportEmail: '@@supportEmail'
+        //apiPath: '/backenddev/api'
         apiPath: '/backenddev/api'
     });

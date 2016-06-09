@@ -1,3 +1,4 @@
 {
-  "inProduction": false
+  "inProduction": false,
+  "apiPath": "'/backenddev/api'"
 }

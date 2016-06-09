@@ -1,3 +1,4 @@
 {
-  "inProduction": true
+  "inProduction": true,
+  "apiPath": "'/api'"
 }
