@@ -102,7 +102,11 @@ angular
             'LANDING_B3': 'por nuestra ciudad ...',
             'LANDING_B4': 'Y haz',
             'LANDING_B5': 'en',
-            'LANDING_B6': 'tu distrito.'
+            'LANDING_B6': 'tu distrito.',
+            'SHARE_P1': 'COMPÁRTEME !',
+            'SHARE_P2': 'EN LA RED',
+            'SHARE_P3': 'QUE PREFIERAS...',
+            'SHARE_P4': 'MÁS INFORMACIÓN'
         });
 
         $translateProvider.translations('cat', {
@@ -114,7 +118,11 @@ angular
             'LANDING_B3': 'per la nostra ciutat...',
             'LANDING_B4': 'I fes',
             'LANDING_B5': 'al',
-            'LANDING_B6': 'teu districte.'
+            'LANDING_B6': 'teu districte.',
+            'SHARE_P1': 'COMPARTEIX-ME !',
+            'SHARE_P2': 'EN LA XARXA',
+            'SHARE_P3': 'QUE PREFEREIXIS...',
+            'SHARE_P4': 'MÉS INFORMACIÓ'
         });
 
         $translateProvider.preferredLanguage('cat');
