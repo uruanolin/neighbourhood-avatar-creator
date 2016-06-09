@@ -26,6 +26,8 @@ angular.module('neighbourhoodAvatarCreatorApp')
                     appState.setDistrict(district);
                     $location.path('/editor');
                 };
+
+                element.scrollTop();
             }
         };
     });
