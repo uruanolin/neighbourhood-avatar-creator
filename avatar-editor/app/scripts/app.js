@@ -33,16 +33,7 @@ angular
                 controllerAs: 'main'
                 */
 
-                /*
-                templateUrl: 'views/editor.html',
-                controller: 'EditorCtrl',
-                controllerAs: 'editor',
-                resolve: {
-                    'selectedDistrict': function(appState) {
-                        return appState.getDistrictPromise();
-                    }
-                }
-                */
+                
                 templateUrl: 'views/landing.html',
                 controller: 'LandingCtrl',
                 controllerAs: 'landing'

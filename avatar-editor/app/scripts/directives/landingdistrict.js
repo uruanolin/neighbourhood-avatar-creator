@@ -9,7 +9,9 @@
 angular.module('neighbourhoodAvatarCreatorApp')
     .directive('landingDistrict', function(appState, $location) {
         return {
+            //templateUrl: 'views/landing02-scroll.html',
             templateUrl: 'views/landing02.html',
+
             restrict: 'E',
             scope: {
 

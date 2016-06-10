@@ -9,7 +9,9 @@
 angular.module('neighbourhoodAvatarCreatorApp')
     .directive('landingLanguage', function($translate) {
         return {
+            //templateUrl: 'views/landing01-scroll.html',
             templateUrl: 'views/landing01.html',
+
             restrict: 'E',
             scope: {
                 displaylanguage: '='

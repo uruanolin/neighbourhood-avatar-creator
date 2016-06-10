@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<script src="bower_components/gsap/src/minified/TweenMax.min.js"></script>
+<script src="bower_components/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js"></script>
+<script src="bower_components/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js"></script>
+
+<script src="bower_components/scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js"></script>
+
+
+<!--
+<section id="one">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 1920 1082" enable-background="new 0 0 1920 1082" xml:space="preserve">
+        <g id="FONS">
+            <rect x="0" y="0" fill="#F7B64C" width="1920" height="1082"/>
+        </g>
+        <g id="MONTANYA">
+            <path fill="#99CC99" d="M1884.4,674.1c0.5-9.3,0.8-18.7,0.8-28.2c0-191.8-99.6-347.3-222.5-347.3c-122.9,0-222.5,155.5-222.5,347.3
+    		c0,9.5,0.3,18.9,0.8,28.2H1884.4z"/>
+        </g>
+    </svg>
+</section>
+
+<section id="two">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 1920 1082" enable-background="new 0 0 1920 1082" xml:space="preserve">
+        <g id="FONS2">
+            <rect x="0" y="0" fill="#F7B64C" width="1920" height="1082"/>
+        </g>
+        <g id="MONTANYA2">
+            <path fill="#99CC99" d="M1884.4,674.1c0.5-9.3,0.8-18.7,0.8-28.2c0-191.8-99.6-347.3-222.5-347.3c-122.9,0-222.5,155.5-222.5,347.3
+    		c0,9.5,0.3,18.9,0.8,28.2H1884.4z"/>
+        </g>
+    </svg>
+</section>
+-->
+<body>
+    <section id="one">
+        <div class="inner">
+            <h1>Slide Title</h1>
+            <p>Slide description text goes here.</p>
+        </div>
+    </section>
+    <section id="two">
+        <div class="inner">
+            <h1>Slide Title</h1>
+            <p>Slide description text goes here.</p>
+        </div>
+    </section>
+    <section id="three">
+        <div class="inner">
+            <h1>Slide Title</h1>
+            <p>Slide description text goes here.</p>
+        </div>
+    </section>
+    <section id="four">
+        <div class="inner">
+            <h1>Slide Title</h1>
+            <p>Slide description text goes here.</p>
+        </div>
+    </section>
+
+    <script>
+        console.log('kakaka');
+        // init
+        var ctrl = new ScrollMagic.Controller({
+            globalSceneOptions: {
+                triggerHook: 'onLeave'
+            }
+        });
+
+        $("section").each(function() {
+
+            var name = $(this).attr('id');
+            new ScrollMagic.Scene({triggerElement: this}).setPin(this).addIndicators().addTo(ctrl);
+
+        });
+    </script>
+</body>

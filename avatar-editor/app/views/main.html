@@ -12,7 +12,7 @@
 
         <script src="bower_components/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js"></script>
         <script src="bower_components/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js"></script>
-        <!--<script src="bower_components/scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js"></script>-->
+        <script src="bower_components/scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js"></script>
 
         <link rel="stylesheet" href="styles/main.css">
     </head>
@@ -148,7 +148,7 @@
             new ScrollMagic.Scene({
                 offset: wh*0.6, triggerElement: $('body')[0],
                 duration: '80%'
-            }).setTween(iphoneContentHat)/*.addIndicators()*/.addTo(ctrl);
+            }).setTween(iphoneContentHat).addIndicators().addTo(ctrl);
 
             // Animate letter A out, letter B in and fade in content of section 3
             var iphoneContent1Tl = new TimelineMax();
