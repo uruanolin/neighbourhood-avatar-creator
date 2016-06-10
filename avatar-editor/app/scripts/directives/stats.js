@@ -19,6 +19,13 @@ angular.module('neighbourhoodAvatarCreatorApp')
                 element.text('this is the stats directive');
 
                 console.log(api.getAvatarStats());
+
+                api.getAvatarStats().then(function (response) {
+                    console.log(response);
+                },
+                function () {
+
+                });
             }
         };
     });

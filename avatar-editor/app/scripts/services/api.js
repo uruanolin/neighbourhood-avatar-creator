@@ -61,7 +61,9 @@
             console.log(authenticate.getToken());
 
             return $http.get(configuration.apiPath + '/avatar', {
-                    token: authenticate.getToken()
+                    headers: {
+                        'x-access-token': authenticate.getToken()
+                    }
                 })
                 .then(function(response) {
 
