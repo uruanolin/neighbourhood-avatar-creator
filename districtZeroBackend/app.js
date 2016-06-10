@@ -71,7 +71,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/api/users', users);
 app.use('/api/avatar', avatar);
-app.use('/api/setup', setup);
+// setup crea un user en la BD
+//app.use('/api/setup', setup);
 app.use('/api/authenticate', authenticate);
 
 // catch 404 and forward to error handler
