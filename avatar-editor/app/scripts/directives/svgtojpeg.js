@@ -107,7 +107,7 @@ angular.module('neighbourhoodAvatarCreatorApp')
                                         DOMURL.revokeObjectURL(url);
 
                                         //var imgURI = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
-                                        var imgURI = canvas.toDataURL('image/jpeg', 0.5).replace('image/jpeg', 'image/octet-stream');
+                                        var imgURI = canvas.toDataURL('image/jpeg', 0.7).replace('image/jpeg', 'image/octet-stream');
 
                                         //--------------------------------------
                                         triggerDownload(imgURI);
