@@ -10,7 +10,7 @@
 
 (function() {
 
-    function api($q, $http, configuration, appState) {
+    function api($q, $http, configuration, authenticate) {
 
         function postAvatar(data) {
 
@@ -35,13 +35,15 @@
             var fd = new FormData();
             fd.append('imguri', data);
 
-            return $http.post(configuration.apiPath + '/avatar/finalScreenshot', {data: data}, {
-/*
-                headers: {
-                    'Content-Type': undefined//'application/x-www-form-urlencoded;charset=utf-8;'//undefined //'multipart/form-data' //'application/x-www-form-urlencoded'
-                },
-                transformRequest: angular.identity
-*/
+            return $http.post(configuration.apiPath + '/avatar/finalScreenshot', {
+                data: data
+            }, {
+                /*
+                                headers: {
+                                    'Content-Type': undefined//'application/x-www-form-urlencoded;charset=utf-8;'//undefined //'multipart/form-data' //'application/x-www-form-urlencoded'
+                                },
+                                transformRequest: angular.identity
+                */
             }).then(function(response) {
                 console.log('POST image OK');
 
@@ -52,60 +54,31 @@
                 console.log('POST image FAIL');
                 return $q.reject(response);
             });
+        }
 
+        function getAvatarStats() {
 
-            /*
-                        return $http.post(configuration.apiPath + '/avatar/finalScreenshot', {
-                            data: data,
-                            headers: {
-                                //'Content-Type': undefined     // --> el content type ya lo rellena Angular (en este caso form data)
-                                'Content-type': 'application/x-www-form-urlencoded'
-                            }
-                        })
-                        .then(function(response) {
-            console.log('POST image OK');
-                            //$log.debug(response);
-                            return response.data;
+            console.log(authenticate.getToken());
 
-                        }, function(response) {
-            console.log('POST image FAIL');
-                            return $q.reject(response);
-                        });
-            */
+            return $http.get(configuration.apiPath + '/avatar', {
+                    token: authenticate.getToken()
+                })
+                .then(function(response) {
 
-            /*
-                        return $http({
-                                method: 'POST',
-                                url: configuration.apiPath + '/avatar/finalScreenshot',
+                    return response.data;
 
-                                headers: {
-                                    //'Content-Type': undefined     // --> el content type ya lo rellena Angular (en este caso form data)
-                                    'Content-type': 'application/x-www-form-urlencoded'
-                                },
-                                transformRequest: transformRequestAsFormPost,
+                }, function(response) {
 
-                                data: {
-                                    imgURI: data
-                                }
-
-                            }).then(function(response) {
-            console.log('POST image OK');
-                                //$log.debug(response);
-                                return response.data;
-
-                            }, function(response) {
-            console.log('POST image FAIL');
-                                return $q.reject(response);
-                            });
-
-                            */
+                    return $q.reject(response);
+                });
         }
 
 
 
         return {
             postAvatar: postAvatar,
-            postFinalScreenshot: postFinalScreenshot
+            postFinalScreenshot: postFinalScreenshot,
+            getAvatarStats: getAvatarStats
         };
     }
 
