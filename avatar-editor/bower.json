@@ -13,7 +13,8 @@
     "scrollmagic": "^2.0.5",
     "gsap": "^1.18.4",
     "angular-translate": "^2.11.0",
-    "angular-socialshare": "angularjs-socialshare#^2.1.6"
+    "angular-socialshare": "angularjs-socialshare#^2.1.6",
+    "pivottable": "^2.0.2"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"
